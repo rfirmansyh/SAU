@@ -12,8 +12,14 @@
 */
 
 Route::view('/ui/', 'ui/index');
+
+// dimas
 Route::view('/ui/login', 'ui/login');
+
+// furqon
 Route::view('/ui/unitkerja', 'ui/unitkerja/index');
+
+// Sintya
 Route::view('/ui/unitkerja/show', 'ui/unitkerja/show');
 
 
