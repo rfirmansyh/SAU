@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/ui/', 'ui/index');
+Route::view('/ui/login', 'ui/login');
+Route::view('/ui/unitkerja', 'ui/unitkerja/index');
+Route::view('/ui/unitkerja/show', 'ui/unitkerja/show');
+
+
+// Auth::routes();
