@@ -125,7 +125,7 @@
 
             {{-- select --}}
             <div class="form-group">
-                <label for="">Select</label>
+                <label for="" class="d-block">Select</label>
                 <select name="" id="" class="selectpicker" data-style="form-control">
                     <option value="1">Option 1</option>
                     <option value="1">Option 2</option>
