@@ -13,87 +13,102 @@
             Semua Data Unit Kerja
         </h2>
     </div>
-    <div class="col-md-auto"><a href="#m-add-unitkerja" class="btn btn-block btn-lg btn-primary"><i class="fas fa-plus mr-2"></i> Tambah Data Unit Kerja</a></div>
+    <div class="col-md-auto">
+      <a href="#m-add-unitkerja" data-toggle="modal" class="btn btn-block btn-lg btn-primary"><i class="fas fa-plus mr-2"></i> Tambah Data Unit Kerja</a>
+    </div>
   </div>
 @endsection
 
 @section('content')
-  {{-- Table --}}
-  <div class="card">
-    <div class="card-header">
-      <h4>Advanced Table</h4>
-      <div class="card-header-form">
-        <form>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
-            <div class="input-group-btn">
-              <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <tr>
-            <th>
-              <div class="custom-checkbox custom-control">
-                <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
-                <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-              </div>
-            </th>
-            <th>ID</th>
-            <th>Unit Kerja</th>
-            <th>Deskripsi</th>
-            <th>Dibuat Pada</th>
-            <th>Terakhir Diubah</th>
-            <th>Action</th>
-          </tr>
-          <tr>
-            <td>
-              <div class="custom-checkbox custom-control">
-                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-2">
-                <label for="checkbox-2" class="custom-control-label">&nbsp;</label>
-              </div>
-            </td>
-            <td>1</td>
-            <td class="align-middle">
-              Fakultas Ilmu Komputer
-            </td>
-            <td>2018-04-10</td>
-            <td>2018-04-10</td>
-            <td>2018-04-10</td>
-            <td>
-                <a href="#m-detail-unitkerja" class="btn btn-sm btn-outline-primary">Detail</a>
-                <a href="{{ url('ui/unitkerja/show') }}" class="btn btn-sm btn-primary">Tampilkan Data</a>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <div class="card-footer text-right">
-        <nav class="d-inline-block">
-          <ul class="pagination mb-0">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-            </li>
-          </ul>
-        </nav>
+<div class="row align-items-end gutters-xs border-bottom pb-4 mb-5"> 
+  <div class="col-md">
+      <div class="form-group mb-md-0">
+          <label for="">Cari Unit Kerja</label>
+          <input type="text" class="form-control" placeholder="Masukan Nama / Lokasi Unit Kerja Dicari">
       </div>
   </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="font-weight-bold">Fakultas Ilmu Komputer</h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6 col-lg-5 mb-3 mb-md-0">
+            <div class="img-card">
+              <img src="{{ asset('img/unitkerja/fasilkom.png') }}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 d-flex flex-column justify-content-between">
+            <div>
+              <div class="font-weight-bold">Unit kerja ID : 1</div>
+              <hr class="my-2">
+              <p>Merupakan Unit Kerja Yang ada di Fakultas Ilmu Komputer</p>
+            </div>
+
+            <div>
+              <small class="text-dark d-block">Sumber Dana :</small>
+              <span class="badge badge-success badge-sm rounded-sm">Rupiah Murni</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer d-flex justify-content-end border-top border-light">
+        <button class="btn btn-warning mr-2">Ubah</button>
+        <button class="btn btn-primary">Detail</button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
+{{-- modal --}}
+@section('modal')
+  {{-- Modal add : #m-add --}}
+  <div class="modal fade" tabindex="-1" id="m-add-unitkerja" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- end of Modal add : #m-add --}}
+@endsection
+{{-- end of modal --}}
+
 @section('style')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
+  <style>
+    .img-card {
+      width: 100%;
+      height: 180px;
+    }
+    .img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      -o-object-fit: cover;
+    }
+    @media screen and (max-width: 420px) {
+      .img-card {
+        height: 120px;
+      }
+    }
+  </style>
 @endsection
 
 @section('script')
