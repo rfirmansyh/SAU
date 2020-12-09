@@ -57,8 +57,8 @@
         </div>
       </div>
       <div class="card-footer d-flex justify-content-end border-top border-light">
-        <button class="btn btn-warning mr-2">Ubah</button>
-        <button data-toggle="modal" data-target="#m-edit" class="btn btn-primary">Detail</button>
+        <button data-toggle="modal" data-target="#m-edit" class="btn btn-warning mr-2">Ubah</button>
+        <button class="btn btn-primary">Detail</button>
       </div>
     </div>
   </div>
