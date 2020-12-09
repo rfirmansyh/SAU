@@ -13,9 +13,9 @@
             <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
           </li>
           <li class="menu-header">Audit</li>
-          <li class=""><a class="nav-link" href="blank.html"><i class="far fa-newspaper"></i> <span>Unit Kerja</span></a></li>
-          <li class=""><a class="nav-link" href="blank.html"><i class="far fa-file-alt"></i> <span>Semua DTM</span></a></li>
-          <li class=""><a class="nav-link" href="blank.html"><i class="far fa-user"></i> <span>Auditor</span></a></li>
+          <li class=""><a class="nav-link" href="{{ url('ui/unitkerja') }}"><i class="far fa-newspaper"></i> <span>Unit Kerja</span></a></li>
+          <li class=""><a class="nav-link" href=""><i class="far fa-file-alt"></i> <span>Semua DTM</span></a></li>
+          <li class=""><a class="nav-link" href="{{ url('ui/profil') }}"><i class="far fa-user"></i> <span>Auditor</span></a></li>
         </ul>
 
         <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
