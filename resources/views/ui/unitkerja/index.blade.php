@@ -58,7 +58,7 @@
       </div>
       <div class="card-footer d-flex justify-content-end border-top border-light">
         <button data-toggle="modal" data-target="#m-edit" class="btn btn-warning mr-2">Ubah</button>
-        <button class="btn btn-primary">Detail</button>
+        <button data-toggle="modal" data-target="#m-detail"class="btn btn-primary">Detail</button>
       </div>
     </div>
   </div>
@@ -68,18 +68,35 @@
 {{-- modal : modal garapnya dari sini --}}
 @section('modal')
 
+
   {{-- Modal add : #m-add --}}
+<form action="{{--#--}}" method="POST">
+  @csrf
   <div class="modal fade" tabindex="-1" id="m-add-unitkerja" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Tambah Unit Kera</h5>
+          <h5 class="modal-title">Tambah Unit Kerja</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p>Modal body text goes here.</p>
+          <div class="form-group">
+                <label for="">Nama Unit Kerja</label>
+                <input type="text" name="" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Deskripsi Unit Kerja</label>
+                <textarea name="" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="" class="d-block">Pilih Sumberdana</label>
+                <select name="" id="" class="selectpicker" data-style="form-control">
+                    <option value="1">Option 1</option>
+                    <option value="1">Option 2</option>
+                </select>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -88,10 +105,14 @@
       </div>
     </div>
   </div>
+  </form>
   {{-- end of Modal add : #m-add --}}
 
+
   {{-- Modal edit : #m-edit --}}
-  <div class="modal fade" tabindex="-1" id="m-add-unitkerja" role="dialog">
+  <form action="{{--#--}}" method="POST">
+  @csrf
+  <div class="modal fade" tabindex="-1" id="m-edit" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -101,7 +122,21 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Modal body text goes here.</p>
+          <div class="form-group">
+                <label for="">Nama Unit Kerja</label>
+                <input type="text" name="" class="form-control" value="{{--#--}}">
+            </div>
+            <div class="form-group">
+                <label for="">Deskripsi Unit Kerja</label>
+                <textarea name="" class="form-control">{{--#--}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="" class="d-block">Pilih Sumberdana</label>
+                <select name="" id="" class="selectpicker" data-style="form-control">
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
+                </select>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -110,7 +145,37 @@
       </div>
     </div>
   </div>
+</form>
   {{-- end of modal edit --}}
+
+
+  {{-- Modal detail : #m-detail --}}
+  <form action="{{--#--}}" method="POST">
+  @csrf
+  <div class="modal fade" tabindex="-1" id="m-detail" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Detail Unit Kerja</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Total Unit Kerja:&nbsp;{{--#--}}</p>
+            <hr>
+            <h5>{{--#--}}1</h5>
+            <h5>{{--#--}}1</h5>
+            <h5>{{--#--}}1</h5>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</form>
+  {{-- end of modal detail --}}
 @endsection
 {{-- end of modal --}}
 
