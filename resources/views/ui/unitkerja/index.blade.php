@@ -65,14 +65,15 @@
 </div>
 @endsection
 
-{{-- modal --}}
+{{-- modal : modal garapnya dari sini --}}
 @section('modal')
+
   {{-- Modal add : #m-add --}}
   <div class="modal fade" tabindex="-1" id="m-add-unitkerja" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="modal-title">Tambah Unit Kera</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -81,16 +82,39 @@
           <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-primary">Tambahkan</button>
         </div>
       </div>
     </div>
   </div>
   {{-- end of Modal add : #m-add --}}
+
+  {{-- Modal edit : #m-edit --}}
+  <div class="modal fade" tabindex="-1" id="m-add-unitkerja" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ubah Unit Kerja</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="button" class="btn btn-primary">Ubah</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- end of modal edit --}}
 @endsection
 {{-- end of modal --}}
 
+{{-- style : kalo butuh editing css --}}
 @section('style')
   <style>
     .img-card {
@@ -111,6 +135,7 @@
   </style>
 @endsection
 
+{{-- script : kalo butu editing script --}}
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"></script>
     <script src="{{ asset('js/page/components-table.js') }}"></script>
