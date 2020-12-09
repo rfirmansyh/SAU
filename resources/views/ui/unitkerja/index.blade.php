@@ -164,9 +164,9 @@
         <div class="modal-body">
             <p>Total Unit Kerja:&nbsp;{{--#--}}</p>
             <hr>
-            <h5>{{--#--}}1</h5>
-            <h5>{{--#--}}1</h5>
-            <h5>{{--#--}}1</h5>
+            <h5>{{--#--}}Nama</h5>
+            <p>{{--#--}}deskripsi</p>
+            <h5>{{--#--}}Sumberdana</h5>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
