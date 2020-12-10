@@ -47,28 +47,65 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>ID</th>
-                            <th>No Buku</th>
-                            <th>No SPJ</th>
-                            <th>Keterangan</th>
-                            <th>DTM</th>
-                            <th>Dibuat Pada</th>
-                            <th>Aksi</th> 
+                            <th>Nama Kertas Kerja</th>
+                            <th>No. Buku</th>
+                            <th>No. SPJ</th>
+                            <th>Tanggal Buku</th>
+                            <th>Tanggal SPJ</th>
+                            <th>Keterangan</th> 
+                            <th>Nilai Transaksi</th> 
+                            <th>Pajak Audit</th>
+                            <th>Temuan Pajak</th>
+                            <th>SSP</th>
+                            <th>Kesesuaian PPN</th>
+                            <th>Kesesuaian PPh</th>
+                            <th>Keterlambatan Penyetoran Pajak</th>
+                            <th>Kuitansi</th>
+                            <th>Surat Tugas / SK</th>
+                            <th>Kelengkapan ttd/materai/stempel/admin</th>
+                            <th>Daftar Hadir Peserta</th>
+                            <th>Kesesuaian dg SBU / PMK</th>
+                            <th>Kesesuaian MAK</th>
+                            <th>Kesesuaian dengan Laporan Kegiatan</th>
+                            <th>Temuan 1</th>
+                            <th>Temuan 2</th>
+                            <th>Temuan 3</th>
+                            <th>Deskripsi Temuan dan Potensi TGR</th>
+                            <th>Ditulis di DTM</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                       @for ($i = 0; $i < 4; $i++)
                         <tr>
                           <td>{{ $i+1 }}</td>
-                          <td>1</td>
+                          <td>Audit FASILKOM</td>
                           <td>{{ rand(1,100) }}</td>
                           <td>{{ rand(1,100) }}</td>
-                          <td>Pelatihan Keuangan Perusahaan</td>
-                          <td><span class="badge badge-success">Iya</span></td>
+                          <td>3 Jan 2020</td>
                           <td>2 Jan 2020</td>
+                          <td>Pelatihan Keuangan Perusahaan</td>
+                          <td>{{ rand(1000000,10000000) }}</td>
+                          <td></td>
+                          <td></td>
+                          <td><span class="badge badge-success">Ada</span></td>
+                          <td>Nihil (sesuai)</td>
+                          <td>Nihil (sesuai)</td>
+                          <td>Tepat Waktu</td>
+                          <td><span class="badge badge-success">Ada</span></td>
+                          <td>Tidak Ada</td>
+                          <td><span class="badge badge-success">Lengkap</span></td>
+                          <td><span class="badge badge-success">Ada</span></td>
+                          <td><span class="badge badge-success">Sesuai</span></td>
+                          <td><span class="badge badge-success">Sesuai</span></td>
+                          <td><span class="badge badge-success">Sesuai</span></td>
+                          <td>Kekurangan Volume Pekerjaan dan/atau Barang</td>
+                          <td>Pembayaran HR dan/atau biaya perjalanan dinas ganda</td>
+                          <td>Belanja tidak sesuai atau melebihi ketentuan</td>
+                          <td>Dokumen Lengkap</td>
+                          <td><span class="badge badge-success">Sesuai</span></td>
                           <td>
-                            <button class="btn btn-sm btn-warning"><i class="fas fa-pen"></i></button>
-                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>
+                          <a href="#m-edit-kertaskerja" data-toggle="modal" class="btn btn-sm btn-warning"><i class="fas fa-pen"></i></a>
                           </td>
                         </tr>    
                       @endfor
@@ -127,8 +164,8 @@
             </div>
 
             <div class="form-group">
-                <label for="">Keterangan :</label>
-                <input type="text" class="form-control">
+                <label for="exampleFormControlTextarea1">Keterangan :</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" required></textarea>
             </div>
         </div>
 
@@ -164,7 +201,7 @@
             {{-- select --}}
             <div class="form-group">
                 <label for="" class="d-block">Kesesuaian PPN :</label>
-                <select name="" id="" class="selectpicker" data-style="form-control">
+                <select name="" id="" class="form-control">
                     <option value="1">Nihil (sesuai)</option>
                     <option value="1">Kurang Bayar</option>
                     <option value="1">Lebih Bayar</option>
@@ -173,7 +210,7 @@
 
             <div class="form-group">
                 <label for="" class="d-block">Kesesuaian PPh :</label>
-                <select name="" id="" class="selectpicker" data-style="form-control">
+                <select name="" id="" class="form-control">
                     <option value="1">Nihil (sesuai)</option>
                     <option value="1">Kurang Bayar</option>
                     <option value="1">Lebih Bayar</option>
@@ -184,7 +221,7 @@
         <div class="tab">
         <div class="form-group">
                 <label for="" class="d-block">Keterlambatan Penyetoran Pajak :</label>
-                <select name="" id="" class="selectpicker" data-style="form-control">
+                <select name="" id="" class="form-control">
                     <option value="1">Tepat Waktu</option>
                     <option value="1">PPN</option>
                     <option value="1">PPh</option>
@@ -285,7 +322,7 @@
         <div class="tab">
         <div class="form-group">
         <label for="" class="d-block">Temuan 1 :</label>
-            <select name="" id="" class="selectpicker" data-style="form-control">
+            <select name="" id="" class="form-control">
                 <option value="1">Kekurangan Volume Pekerjaan dan/atau Barang</option>
                 <option value="1">Pembayaran HR dan/atau biaya perjalanan dinas ganda</option>
                 <option value="1">Belanja tidak sesuai atau melebihi ketentuan</option>
@@ -305,7 +342,7 @@
 
             <div class="form-group">
             <label for="" class="d-block">Temuan 2 :</label>
-            <select name="" id="" class="selectpicker" data-style="form-control">
+            <select name="" id="" class="form-control">
                 <option value="1">Kekurangan Volume Pekerjaan dan/atau Barang</option>
                 <option value="1">Pembayaran HR dan/atau biaya perjalanan dinas ganda</option>
                 <option value="1">Belanja tidak sesuai atau melebihi ketentuan</option>
@@ -325,7 +362,7 @@
 
             <div class="form-group">
             <label for="" class="d-block">Temuan 3 :</label>
-            <select name="" id="" class="selectpicker" data-style="form-control">
+            <select name="" id="" class="form-control">
                 <option value="1">Kekurangan Volume Pekerjaan dan/atau Barang</option>
                 <option value="1">Pembayaran HR dan/atau biaya perjalanan dinas ganda</option>
                 <option value="1">Belanja tidak sesuai atau melebihi ketentuan</option>
@@ -344,8 +381,8 @@
             </div>
 
             <div class="form-group">
-            <label for="">Deskripsi Temuan dan Potensi TGR (tulis strip(-) jika tidak ada):</label>
-            <input type="text" oninput="this.className = ''">
+            <label for="exampleFormControlTextarea1">Deskripsi Temuan dan Potensi TGR (tulis strip(-) jika tidak ada):</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" required></textarea>
             </div>
 
             <div class="form-group">
@@ -374,8 +411,8 @@
         <div class="modal-footer">
         <div style="overflow:auto;">
         <div style="float:right;">
-            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Kembali</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Selanjutnya</button>
         </div>
         </div>
         </div>
@@ -383,6 +420,292 @@
     </div>
   </div>
   {{-- end of Modal add : #m-add --}}
+  
+
+{{-- Modal edit : #m-edit --}}
+<div class="modal fade" tabindex="-1" id="m-edit-kertaskerja" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form id="regForm" action="">
+        
+        <h1>Kertas Kerja</h1>
+
+        <!-- One "tab" for each step in the form: -->
+        {{-- input text/default --}}
+            <div class="form-group">
+                <label for="">Nama Kertas Kerja :</label>
+                <input type="text" class="form-control">
+            </div>
+
+            {{-- input number --}}
+            <div class="form-group">
+                <label for="">No. Buku :</label>
+                <input type="number" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="">No. SPJ :</label>
+                <input type="number" class="form-control">
+            </div>
+            
+            {{-- input date --}}
+            <div class="form-group">
+                <label for="">Tanggal Buku :</label>
+                <input type="date" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="">Tanggal SPJ :</label>
+                <input type="date" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Keterangan :</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" required></textarea>
+            </div>
+
+        <div class="form-group">
+                <label for="">Nilai Transaksi :</label>
+                <input type="number" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="">Pajak Audit :</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="">Temuan Pajak :</label>
+                <input type="text" class="form-control">
+            </div>
+
+            {{-- input radio --}}
+            <div class="form-group">
+                <label for="" class="d-block">SSP :</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio1">Ada</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio1">Tidak Ada</label>
+                </div>
+            </div>
+
+            {{-- select --}}
+            <div class="form-group">
+                <label for="" class="d-block">Kesesuaian PPN :</label>
+                <select name="" id="" class="form-control">
+                    <option value="1">Nihil (sesuai)</option>
+                    <option value="1">Kurang Bayar</option>
+                    <option value="1">Lebih Bayar</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="d-block">Kesesuaian PPh :</label>
+                <select name="" id="" class="form-control">
+                    <option value="1">Nihil (sesuai)</option>
+                    <option value="1">Kurang Bayar</option>
+                    <option value="1">Lebih Bayar</option>
+                </select>
+            </div>
+
+        <div class="form-group">
+                <label for="" class="d-block">Keterlambatan Penyetoran Pajak :</label>
+                <select name="" id="" class="form-control">
+                    <option value="1">Tepat Waktu</option>
+                    <option value="1">PPN</option>
+                    <option value="1">PPh</option>
+                    <option value="1">PPN &PPh</option>
+                </select>
+            </div>
+
+        
+            <div class="form-group">
+                <label for="" class="d-block">Kuitansi :</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio2" name="customRadio1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio2">Ada</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio2" name="customRadio1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio2">Tidak Ada</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+            <label for="" class="d-block">Surat Tugas / SK :</label>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio3" name="customRadio2" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio3">Ada</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio3" name="customRadio2" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio3">Tidak Ada</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="d-block">Kelengkapan ttd/materai/stempel/admin :</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio4" name="customRadio3" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio4">Lengkap</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio4" name="customRadio3" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio4">Kurang Lengkap</label>
+                    </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio4" name="customRadio3" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio4">Tidak Lengkap</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="d-block">Daftar Hadir Peserta :</label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadio5" name="customRadio4" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadio5">Ada</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadio5" name="customRadio4" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadio5">Tidak Ada</label>
+                    </div>
+                </div>
+
+        <div class="form-group">
+            <label for="" class="d-block">Kesesuaian dg SBU / PMK :</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio6" name="customRadio5" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio6">Sesuai</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio6" name="customRadio5" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio6">Tidak Sesuai</label>
+                </div>
+            </div>
+
+        <div class="form-group">
+            <label for="" class="d-block">Kesesuaian MAK :</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio7" name="customRadio6" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio7">Sesuai</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio7" name="customRadio6" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio7">Tidak Sesuai</label>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="d-block">Kesesuaian dengan Laporan Kegiatan :</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio9" name="customRadio8" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio9">Sesuai</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadio9" name="customRadio8" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio9">Tidak Sesuai</label>
+                </div>
+        </div>
+
+        <div class="form-group">
+        <label for="" class="d-block">Temuan 1 :</label>
+            <select name="" id="" class="form-control">
+                <option value="1">Kekurangan Volume Pekerjaan dan/atau Barang</option>
+                <option value="1">Pembayaran HR dan/atau biaya perjalanan dinas ganda</option>
+                <option value="1">Belanja tidak sesuai atau melebihi ketentuan</option>
+                <option value="1">Kelebihan penetapan dan pembayaran restitusi pajak atau kompensasi kerugian</option>
+                <option value="1">Entitas belum/tidak melaksanakan tuntutan pembendaharaan</option>
+                <option value="1">Pengenaan tarif pajak /PNBP lebih rendah dari ketentuan</option>
+                <option value="1">Pertanggungjawaban tidak akuntanble atau bukti tidak lengkap atau valid</option>
+                <option value="1">Penyimpangan terhadap peraturan perundang-undangan bidang tertentu</option>
+                <option value="1">Pengalihan anggaran antar MAK tidak sah</option>
+                <option value="1">Pencatatan tidak/belum dilakukan/tidak akurat</option>
+                <option value="1">Pemborosan keuangan negara/daerah/perusahaan/ kemahalan</option>
+                <option value="1">Penggunaan anggaran tidak tepat sasaran/tidak sesuai peruntukan</option>
+                <option value="1">Pemahalan harga (mark up)</option>
+                <option value="1">'Penyetoran penerimaan negara/daerah atau kas di bendaharawan ke kas negara/daerah melebihi batas waktu yang ditentukan</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label for="" class="d-block">Temuan 2 :</label>
+            <select name="" id="" class="form-control">
+                <option value="1">Kekurangan Volume Pekerjaan dan/atau Barang</option>
+                <option value="1">Pembayaran HR dan/atau biaya perjalanan dinas ganda</option>
+                <option value="1">Belanja tidak sesuai atau melebihi ketentuan</option>
+                <option value="1">Kelebihan penetapan dan pembayaran restitusi pajak atau kompensasi kerugian</option>
+                <option value="1">Entitas belum/tidak melaksanakan tuntutan pembendaharaan</option>
+                <option value="1">Pengenaan tarif pajak /PNBP lebih rendah dari ketentuan</option>
+                <option value="1">Pertanggungjawaban tidak akuntanble atau bukti tidak lengkap atau valid</option>
+                <option value="1">Penyimpangan terhadap peraturan perundang-undangan bidang tertentu</option>
+                <option value="1">Pengalihan anggaran antar MAK tidak sah</option>
+                <option value="1">Pencatatan tidak/belum dilakukan/tidak akurat</option>
+                <option value="1">Pemborosan keuangan negara/daerah/perusahaan/ kemahalan</option>
+                <option value="1">Penggunaan anggaran tidak tepat sasaran/tidak sesuai peruntukan</option>
+                <option value="1">Pemahalan harga (mark up)</option>
+                <option value="1">'Penyetoran penerimaan negara/daerah atau kas di bendaharawan ke kas negara/daerah melebihi batas waktu yang ditentukan</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label for="" class="d-block">Temuan 3 :</label>
+            <select name="" id="" class="form-control">
+                <option value="1">Kekurangan Volume Pekerjaan dan/atau Barang</option>
+                <option value="1">Pembayaran HR dan/atau biaya perjalanan dinas ganda</option>
+                <option value="1">Belanja tidak sesuai atau melebihi ketentuan</option>
+                <option value="1">Kelebihan penetapan dan pembayaran restitusi pajak atau kompensasi kerugian</option>
+                <option value="1">Entitas belum/tidak melaksanakan tuntutan pembendaharaan</option>
+                <option value="1">Pengenaan tarif pajak /PNBP lebih rendah dari ketentuan</option>
+                <option value="1">Pertanggungjawaban tidak akuntanble atau bukti tidak lengkap atau valid</option>
+                <option value="1">Penyimpangan terhadap peraturan perundang-undangan bidang tertentu</option>
+                <option value="1">Pengalihan anggaran antar MAK tidak sah</option>
+                <option value="1">Pencatatan tidak/belum dilakukan/tidak akurat</option>
+                <option value="1">Pemborosan keuangan negara/daerah/perusahaan/ kemahalan</option>
+                <option value="1">Penggunaan anggaran tidak tepat sasaran/tidak sesuai peruntukan</option>
+                <option value="1">Pemahalan harga (mark up)</option>
+                <option value="1">'Penyetoran penerimaan negara/daerah atau kas di bendaharawan ke kas negara/daerah melebihi batas waktu yang ditentukan</option>
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label for="exampleFormControlTextarea1">Deskripsi Temuan dan Potensi TGR (tulis strip(-) jika tidak ada):</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" required></textarea>
+            </div>
+
+            <div class="form-group">
+            <label for="">Ditulis di DTM :</label> <br>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio10" name="customRadio9" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio10">Iya</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio10" name="customRadio9" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio10">Tidak</label>
+            </div>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+        <div style="overflow:auto;">
+        <div style="float:right;">
+        <input type="submit" name="submit" class="btn btn-primary" value="Ubah">
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{-- end of Modal edit : #m-edit --}}
 @endsection
 {{-- end of modal --}}
 
@@ -613,7 +936,7 @@
         if (n == (x.length - 1)) {
             document.getElementById("nextBtn").innerHTML = "Submit";
         } else {
-            document.getElementById("nextBtn").innerHTML = "Next";
+            document.getElementById("nextBtn").innerHTML = "Selanjutnya";
         }
         //... and run a function that will display the correct step indicator:
         fixStepIndicator(n)
