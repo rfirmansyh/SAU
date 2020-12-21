@@ -6,4 +6,14 @@
             }  
         }
     }
+    .dropdown-menu {
+        a.dropdown-item {
+            &.active {
+                background: rgb(212, 211, 211) !important;
+                span.text {
+                    color: color(dark);
+                }
+            }
+        }
+    }
 }

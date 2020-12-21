@@ -1,11 +1,11 @@
-@extends('ui._layouts._app-global')
+@extends('_layouts.app-global')
 
 @section('content-extends')
     <div id="app">
         <div class="main-wrapper">
             <div class="navbar-bg"></div>
-            @include('ui._layouts.app-navbar')
-            @include('ui._layouts.app-sidebar')
+            @include('_layouts.app-navbar')
+            @include('_layouts.app-sidebar')
 
             <!-- Main Content -->
             <div class="main-content">
@@ -17,12 +17,6 @@
                     </div>
                 </div>
 
-                @if(Session::has('alert-message'))
-                    <div class="alert alert-{{ Session::get('alert-type') }}">
-                        {{ Session::get('alert-message') }}
-                    </div>
-                @endif
-
                 <div class="section-body">
                     <div class="mb-4">
                     @yield('content-header')
@@ -32,7 +26,7 @@
                 </section>
             </div>
 
-            @include('ui._layouts.app-footer')
+            @include('_layouts.app-footer')
         </div>
     </div>
 @endsection

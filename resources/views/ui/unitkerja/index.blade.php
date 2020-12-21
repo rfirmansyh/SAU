@@ -69,119 +69,134 @@
 @section('modal')
 
 
-  {{-- Modal add : #m-add --}}
-<form action="{{--#--}}" method="POST">
-  @csrf
-  <div class="modal fade" tabindex="-1" id="m-add-unitkerja" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Tambah Unit Kerja</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-                <label for="">Nama Unit Kerja</label>
-                <input type="text" name="" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="">Deskripsi Unit Kerja</label>
-                <textarea name="" class="form-control"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="" class="d-block">Pilih Sumberdana</label>
-                <select name="" id="" class="selectpicker" data-style="form-control">
-                    <option value="1">Option 1</option>
-                    <option value="1">Option 2</option>
-                </select>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-          <button type="button" class="btn btn-primary">Tambahkan</button>
-        </div>
+  	{{-- Modal add : #m-add --}}
+    <div class="modal fade" tabindex="-1" id="m-add-unitkerja" role="dialog">
+      	<div class="modal-dialog" role="document">
+        	<div class="modal-content">
+          		<div class="modal-header">
+					<h5 class="modal-title">Tambah Unit Kerja</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+          		</div>
+				<div class="modal-body">
+					<div class="card card-body">
+						<div class="img-unitkerja">
+							<img src="" alt="" id="img-unitkerja">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="">Foto Unit Kerja</label>
+						<div class="custom-file">
+							<input 
+								type="file" 
+								name="photo"
+								id="customFile" onchange="openFile(event, '#img-unitkerja')"
+								class="custom-file-input">
+							<label class="custom-file-label" for="customFile">Choose file</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="">Nama Unit Kerja</label>
+						<input type="text" name="" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="">Deskripsi Unit Kerja</label>
+						<textarea name="" class="form-control"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="" class="d-block">Pilih Sumberdana</label>
+						<select name="" id="" class="selectpicker" data-style="form-control">
+							<option value="1">Option 1</option>
+							<option value="1">Option 2</option>
+						</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+					<button type="button" class="btn btn-primary">Tambahkan</button>
+				</div>
+        	</div>
+      	</div>
+    </div>
+    {{-- end of Modal add : #m-add --}}
+
+
+    {{-- Modal edit : #m-edit --}}
+    <div class="modal fade" tabindex="-1" id="m-edit" role="dialog">
+      	<div class="modal-dialog" role="document">
+        	<div class="modal-content">
+
+         	 <div class="modal-header">
+				<h5 class="modal-title">Ubah Unit Kerja</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+          	</div>
+
+			<div class="modal-body">
+			<form action="" method="post">
+				<div class="card card-body">
+					<div class="img-unitkerja">
+						<img src="" alt="" id="img-unitkerja-edit">
+					</div>
+				</div>
+			  	<div class="form-group">
+					<label for="">Foto Unit Kerja</label>
+					<div class="custom-file">
+						<input 
+							type="file" 
+							name="photo"
+							id="customFile" onchange="openFile(event, '#img-unitkerja-edit')"
+							class="custom-file-input">
+						<label class="custom-file-label" for="customFile">Choose file</label>
+					</div>
+			  	</div>
+			  	<div class="form-group">
+					<label for="">Nama Unit Kerja</label>
+					<input type="text" name="" class="form-control">
+			  	</div>
+			  	<div class="form-group">
+					<label for="">Deskripsi Unit Kerja</label>
+					<textarea name="" class="form-control"></textarea>
+			  	</div>
+			 	<div class="form-group">
+					<label for="" class="d-block">Pilih Sumberdana</label>
+					<select name="" id="" class="selectpicker" data-style="form-control">
+						<option value="1">Option 1</option>
+						<option value="1">Option 2</option>
+					</select>
+			 	 </div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+				<button type="button" class="btn btn-primary">Ubah</button>
+			</div>
+			</form>
+			
+          </div>
       </div>
     </div>
-  </div>
-  </form>
-  {{-- end of Modal add : #m-add --}}
+    </form>
+    {{-- end of modal edit --}}
 
 
-  {{-- Modal edit : #m-edit --}}
-  <form action="{{--#--}}" method="POST">
-  @csrf
-  <div class="modal fade" tabindex="-1" id="m-edit" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Ubah Unit Kerja</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-                <label for="">Nama Unit Kerja</label>
-                <input type="text" name="" class="form-control" value="{{--#--}}">
-            </div>
-            <div class="form-group">
-                <label for="">Deskripsi Unit Kerja</label>
-                <textarea name="" class="form-control">{{--#--}}</textarea>
-            </div>
-            <div class="form-group">
-                <label for="" class="d-block">Pilih Sumberdana</label>
-                <select name="" id="" class="selectpicker" data-style="form-control">
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
-                </select>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-          <button type="button" class="btn btn-primary">Ubah</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
-  {{-- end of modal edit --}}
-
-
-  {{-- Modal detail : #m-detail --}}
-  <form action="{{--#--}}" method="POST">
-  @csrf
-  <div class="modal fade" tabindex="-1" id="m-detail" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title">Detail Unit Kerja</h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <p>Total Unit Kerja:&nbsp;{{--#--}}</p>
-            <hr>
-            <h5>{{--#--}}Nama</h5>
-            <p>{{--#--}}deskripsi</p>
-            <h5>{{--#--}}Sumberdana</h5>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-      </div>
-      </div>
-    </div>
-  </div>
-</form>
-  {{-- end of modal detail --}}
 @endsection
 {{-- end of modal --}}
 
 {{-- style : kalo butuh editing css --}}
 @section('style')
   <style>
+    .img-unitkerja {
+      width: 100%;
+      height: 220px;
+    }
+    .img-unitkerja img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      -o-object-fit: cover;
+    }
     .img-card {
       width: 100%;
       height: 180px;
@@ -203,5 +218,4 @@
 {{-- script : kalo butu editing script --}}
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"></script>
-    <script src="{{ asset('js/page/components-table.js') }}"></script>
 @endsection
