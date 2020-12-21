@@ -42,7 +42,7 @@ class AjaxController extends Controller
                 return $kertaskerja->ditulis_dtm;
             })
             ->addColumn('action', function($kertaskerja) {
-                return '<a href="#" class="btn btn-sm btn-warning"><i class="fas fa-pen"></i></a>
+                return '<button data-edit-id="'.$kertaskerja->id.'" class="btn btn-sm btn-warning"><i class="fas fa-pen"></i></a>
                         <button data-detail-id="'.$kertaskerja->id.'" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>';
             })
             ->rawColumns(['action'])->make(true);
