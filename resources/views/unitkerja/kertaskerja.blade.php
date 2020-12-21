@@ -1590,7 +1590,7 @@
                                 },
                                 success: function(result) {
                                     const kertaskerja = result.data;
-                                    console.log(kertaskerja);
+                                    console.log(result);
                                     let temuan = kertaskerja.temuan !== null ? JSON.parse(kertaskerja.temuan).map((val) => {
                                         return `
                                         <div class="row mb-1">
@@ -1633,6 +1633,9 @@
                                     // SHOW MODAL HIDE LOADER
                                     $('#m-detail').find('.modal-body.load').hide();
                                     $('#m-detail').find('.modal-body.success').show();
+                                },
+                                error: function(err) {
+                                    console.log(err);
                                 }
                             })
                         })
