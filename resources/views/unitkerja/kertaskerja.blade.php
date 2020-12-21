@@ -1591,7 +1591,7 @@
                                 success: function(result) {
                                     const kertaskerja = result.data;
                                     console.log(kertaskerja);
-                                    let temuan = JSON.parse(kertaskerja.temuan).map((val) => {
+                                    let temuan = kertaskerja.temuan !== null ? JSON.parse(kertaskerja.temuan).map((val) => {
                                         return `
                                         <div class="row mb-1">
                                             <div class="col-auto">${val.kode}</div>
@@ -1600,7 +1600,7 @@
                                             </div>
                                         </div>
                                         `;
-                                    });
+                                    }) : '';
                                     // ajax data
                                     $('#unitkerja-detail').html(kertaskerja.nama_unitkerja)
                                     $('#id-detail').val(kertaskerja.id);
