@@ -1,4 +1,4 @@
-@extends('ui._layouts.app')
+@extends('_layouts.app')
 
 @section('title', 'Dashboard')
 
@@ -8,26 +8,24 @@
     <div class="breadcrumb-item">Fakultas Ilmu Komputer</div>
 @endsection
 @section('content-header')
-  <div class="row gutters-xs align-items-lg-center justify-content-between my-4">
-    <div class="col-md-6 col-lg-3 col-xl-2">
-      <div class="card card-body p-2 mb-0">
-        <img src="{{ asset('img/unitkerja/fasilkom.png') }}" alt="" class="img-fluid">
-      </div>
+    <div class="row gutters-xs align-items-lg-center justify-content-between my-4">
+        <div class="col-md-6 col-lg-3 col-xl-2">
+        <div class="card card-body p-2 mb-0">
+            <img src="{{ asset('img/unitkerja/fasilkom.png') }}" alt="" class="img-fluid">
+        </div>
+        </div>
+        <div class="col-md pl-3 mb-3 mb-md-0">
+            <h5 class="my-0">Fakultas Ilmu Komputer</h5>
+            <span>Detail Unit Kerja Fakultas Ilmu Komputer</span>
+        </div>
+        <div class="col-lg-auto">
+            <a href="#m-add-kertaskerja" data-toggle="modal" class="btn btn-block btn-lg btn-primary"><i class="fas fa-plus mr-2"></i> Tambah Data</a>
+        </div>
     </div>
-    <div class="col-md pl-3 mb-3 mb-md-0">
-        <h5 class="my-0">Fakultas Ilmu Komputer</h5>
-        <span>Detail Unit Kerja Fakultas Ilmu Komputer</span>
-    </div>
-    <div class="col-lg-auto">
-        <a href="#m-add-kertaskerja" data-toggle="modal" class="btn btn-block btn-lg btn-primary"><i class="fas fa-plus mr-2"></i> Tambah Data</a>
-    </div>
-  </div>
 @endsection
 
 
 @section('content')
- 
-
   
     {{-- Export --}}
     <div class="card">
@@ -182,19 +180,29 @@
                             <div class="col-lg">
                                 <div class="form-group">
                                     <label for="">Nilai Transaksi :</label>
-                                    <input 
-                                        value="{{ old('nilai_transaksi') }}"
-                                        name="nilai_transaksi"
-                                        type="number" class="form-control">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp</span>
+                                        </div>
+                                        <input 
+                                            value="{{ old('nilai_transaksi') }}"
+                                            name="nilai_transaksi"
+                                            type="number" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg">
                                 <div class="form-group">
                                     <label for="">Pajak Audite :</label>
-                                    <input 
-                                        value="{{ old('pajak_audite') }}"
-                                        name="pajak_audite"
-                                        type="text" class="form-control">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp</span>
+                                        </div>
+                                        <input 
+                                            value="{{ old('pajak_audite') }}"
+                                            name="pajak_audite"
+                                            type="text" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -596,381 +604,415 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-body success">
-                    <div class="row mb-3">
-                        <div class="col-lg">
-                            <div class="text-grey mb-2">Unit Kerja : </div>
-                            <h5 id="unitkerja-edit" class="text-dark font-weight-bold mb-4">Fakultas Ilmu Komputer</h5>
-                        </div>
-                        <div class="col-auto text-lg-right">
-                            <div class="form-group">
-                                <label class="font-weight-bold tx-18" for="">Ditulis di DTM :</label> <br>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        value="1"
-                                        type="radio" 
-                                        id="ditulis_dtm-edit-1" 
-                                        name="ditulis_dtm" class="custom-control-input">
-                                    <label class="custom-control-label" for="ditulis_dtm-edit-1">
-                                        <span class="badge badge-success"><i class="fas fa-check"></i></span> Iya 
-                                    </label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        value="0"
-                                        type="radio" 
-                                        id="ditulis_dtm-edit-2" 
-                                        name="ditulis_dtm" class="custom-control-input">
-                                    <label class="custom-control-label" for="ditulis_dtm-edit-2">
-                                        <span class="badge badge-secondary"><i class="fas fa-times"></i></span> Tidak 
-                                    </label>
-                                </div>
+                {{-- form start --}}
+                <form action="" id="form-edit" method="POST">
+                @csrf @method('PUT')
+                    <div class="modal-body success">
+                        <div class="row mb-3">
+                            <div class="col-lg">
+                                <div class="text-grey mb-2">Unit Kerja : </div>
+                                <h5 id="unitkerja-edit" class="text-dark font-weight-bold mb-4">Fakultas Ilmu Komputer</h5>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="">ID Kertas Kerja :</label>
-                                <input type="text" id="id-edit" value="" class="form-control" disabled>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="">No Buku :</label>
-                                <input 
-                                    name="no_buku"
-                                    type="text" id="no_buku-edit" value="" class="form-control" disabled>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="">No SPJ :</label>
-                                <input 
-                                    name="no_spj"
-                                    type="text" id="no_spj-edit" value="" class="form-control" disabled>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="">Tanggal Buku :</label>
-                                <input
-                                    name="tanggal_buku" 
-                                    type="text" id="tanggal_buku-edit" value="23 Jan 2020" class="form-control mb-3" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Tanggal SPJ :</label>
-                                <input
-                                    name="tanggal_spj" 
-                                    type="text" id="tanggal_spj-edit" value="23 Jan 2020" class="form-control" disabled>
-                            </div>
-                        </div>
-                        <div class="col-lg">
-                            <div class="form-group">
-                                <label>Keterangan :</label>
-                                <textarea name="keterangan" id="keterangan-edit" class="form-control" rows="6" disabled></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="">Nilai Transaksi</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Rp</span>
-                                    </div>
-                                    <input type="text" id="nilai_transaksi-edit" value="25000" class="form-control" disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Pajak Audite</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Rp</span>
-                                    </div>
-                                    <input type="text" id="pajak_audite-edit" value="100000" class="form-control" disabled>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg">
-                            <div class="form-group">
-                                <label for="">Temuan Pajak :</label>
-                                <textarea name="temuan_pajak" id="temuan_pajak-edit" class="form-control" rows="6" disabled></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="" class="d-block">Kesesuaian PPN :</label>
-                                <select 
-                                    name="kesesuaian_ppn" 
-                                    id="kesesuaian_ppn-edit" 
-                                    class="selectpicker" 
-                                    data-style="form-control" data-width="100%" disabled>
-                                        @foreach ($kesesuaians as $kesesuaian)
-                                            <option {{ old('kesesuaian_ppn') === $kesesuaian->id ? 'selected' : '' }} value="{{ $kesesuaian->id }}">{{ $kesesuaian->name }}</option>
-                                        @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="" class="d-block">Kesesuaian PPh :</label>
-                                <select 
-                                    name="kesesuaian_pph" 
-                                    id="kesesuaian_pph-edit" 
-                                    class="selectpicker" 
-                                    data-style="form-control" data-width="100%" disabled>
-                                        @foreach ($kesesuaians as $kesesuaian)
-                                            <option {{ old('kesesuaian_pph') === $kesesuaian->id ? 'selected' : '' }} value="{{ $kesesuaian->id }}">{{ $kesesuaian->name }}</option>
-                                        @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="" class="d-block">Keterlambatan Penyetoran Pajak :</label>
-                                <select 
-                                    name="keterlambatan_penyetoran" 
-                                    id="keterlambatan_penyetoran-edit" 
-                                    class="selectpicker" 
-                                    data-style="form-control" data-width="100%" disabled>
-                                        @foreach ($keterlambatans as $keterlambatan)
-                                            <option {{ old('keterlambatan_penyetoran') === $keterlambatan->id ? 'selected' : '' }} value="{{ $keterlambatan->id }}">{{ $keterlambatan->name }}</option>
-                                        @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group bg-disabled px-3 py-1 rounded-lg">
-                                <label for="" class="d-block">SSP :</label>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('ssp') === '1' ? 'checked' : ''  }}
-                                        name="ssp" 
-                                        id="ssp-edit-1" 
-                                        value="1"
-                                        type="radio" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="ssp-edit-1">Ada</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('ssp') === '2' ? 'checked' : ''  }}
-                                        name="ssp" 
-                                        id="ssp-edit-2" 
-                                        value="0"
-                                        type="radio" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="ssp-edit-2">Tidak Ada</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg">
-                            <div class="form-group bg-disabled px-3 py-1 rounded-lg">
-                                <label for="" class="d-block">Kelengkapan ttd/materai/stempel/admin :</label>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('kelengkapan_ttd') === '1' ? 'checked' : '' }}
-                                        value="1"
-                                        type="radio" 
-                                        id="kelengkapan_ttd-edit-1" 
-                                        name="kelengkapan_ttd" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="kelengkapan_ttd-edit-1">Lengkap</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('kelengkapan_ttd-edit') === '2' ? 'checked' : '' }}
-                                        value="2"
-                                        type="radio" 
-                                        id="kelengkapan_ttd-edit-2" 
-                                        name="kelengkapan_ttd" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="kelengkapan_ttd-edit-2">Kurang Lengkap</label>
-                                    </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('kelengkapan_ttd-edit') === '3' ? 'checked' : '' }}
-                                        value="3"
-                                        type="radio" 
-                                        id="kelengkapan_ttd-edit-3" 
-                                        name="kelengkapan_ttd" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="kelengkapan_ttd-edit-3">Tidak Lengkap</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group bg-disabled px-3 py-1 rounded-lg">
-                                <label for="" class="d-block">Kuitansi :</label>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('kuitansi') === '1' ? 'checked' : '' }}
-                                        value="1"
-                                        type="radio" 
-                                        id="kuitansi-edit-1" 
-                                        name="kuitansi" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="kuitansi-edit-1">Ada</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('kuitansi') === '0' ? 'checked' : '' }}
-                                        value="0"
-                                        type="radio" 
-                                        id="kuitansi-edit-2" 
-                                        name="kuitansi" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="kuitansi-edit-2">Tidak Ada</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group bg-disabled px-3 py-1 rounded-lg">
-                                <label for="" class="d-block">Surat Tugas / SK :</label>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('surat_sk') === '1' ? 'checked' : '' }}
-                                        value="1"
-                                        type="radio" 
-                                        id="surat_sk-edit-1" 
-                                        name="surat_sk" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="surat_sk-edit-1">Ada</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('surat_sk') === '0' ? 'checked' : '' }}
-                                        value="0"
-                                        type="radio" 
-                                        id="surat_sk-edit-2" 
-                                        name="surat_sk" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="surat_sk-edit-2">Tidak Ada</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group bg-disabled px-3 py-1 rounded-lg">
-                                <label for="" class="d-block">Daftar Hadir Peserta :</label>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('daftar_hadir_peserta') === '1' ? 'checked' : '' }}
-                                        value="1"
-                                        type="radio" 
-                                        id="daftar_hadir_peserta-edit-1" 
-                                        name="daftar_hadir_peserta" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="daftar_hadir_peserta-edit-1">Ada</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('daftar_hadir_peserta') === '0' ? 'checked' : '' }}
-                                        value="0"
-                                        type="radio" 
-                                        id="daftar_hadir_peserta-edit-2" 
-                                        name="daftar_hadir_peserta" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="daftar_hadir_peserta-edit-2">Tidak Ada</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group bg-disabled px-3 py-1 rounded-lg">
-                                <label for="" class="d-block">Kesesuaian dg SBU / PMK :</label>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('kesesuaian_sbu') === '1' ? 'checked' : '' }}
-                                        value="1"
-                                        type="radio" 
-                                        id="kesesuaian_sbu-edit-1" 
-                                        name="kesesuaian_sbu" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="kesesuaian_sbu-edit-1">Sesuai</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('kesesuaian_sbu') === '0' ? 'checked' : '' }}
-                                        value="0"
-                                        type="radio" 
-                                        id="kesesuaian_sbu-edit-2" 
-                                        name="kesesuaian_sbu" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="kesesuaian_sbu-edit-2">Tidak Sesuai</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group bg-disabled px-3 py-1 rounded-lg">
-                                <label for="" class="d-block">Kesesuaian MAK :</label>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('kesesuaian_mak') === '1' ? 'checked' : '' }}
-                                        value="1"
-                                        type="radio" 
-                                        id="kesesuaian_mak-edit-1" 
-                                        name="kesesuaian_mak" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="kesesuaian_mak-edit-1">Sesuai</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input 
-                                        {{ old('ksesuaian_mak') === '0' ? 'checked' : '' }}
-                                        value="0"
-                                        type="radio" 
-                                        id="kesesuaian_mak-edit-2" 
-                                        name="kesesuaian_mak" class="custom-control-input" disabled>
-                                    <label class="custom-control-label" for="kesesuaian_mak-edit-2">Tidak Sesuai</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group bg-disabled px-3 py-1 rounded-lg">
-                                <label for="" class="d-block">Kesesuaian dengan Laporan Kegiatan :</label>
+                            <div class="col-auto text-lg-right">
+                                <div class="form-group">
+                                    <label class="font-weight-bold tx-18" for="">Ditulis di DTM :</label> <br>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input 
-                                            {{ old('kesesuaian_laporan_kegiatan') === '1' ? 'checked' : '' }}
                                             value="1"
                                             type="radio" 
-                                            id="kesesuaian_laporan_kegiatan-edit-1" 
-                                            name="kesesuaian_laporan_kegiatan" class="custom-control-input" disabled>
-                                        <label class="custom-control-label" for="kesesuaian_laporan_kegiatan-edit-1">Sesuai</label>
+                                            id="ditulis_dtm-edit-1" 
+                                            name="ditulis_dtm" class="custom-control-input">
+                                        <label class="custom-control-label" for="ditulis_dtm-edit-1">
+                                            <span class="badge badge-success"><i class="fas fa-check"></i></span> Iya 
+                                        </label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input 
-                                            {{ old('kesesuaian_laporan_kegiatan') === '0' ? 'checked' : '' }}
                                             value="0"
                                             type="radio" 
-                                            id="kesesuaian_laporan_kegiatan-edit-2" 
-                                            name="kesesuaian_laporan_kegiatan" class="custom-control-input" disabled>
-                                        <label class="custom-control-label" for="kesesuaian_laporan_kegiatan-edit-2">Tidak Sesuai</label>
+                                            id="ditulis_dtm-edit-2" 
+                                            name="ditulis_dtm" class="custom-control-input">
+                                        <label class="custom-control-label" for="ditulis_dtm-edit-2">
+                                            <span class="badge badge-secondary"><i class="fas fa-times"></i></span> Tidak 
+                                        </label>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">ID Kertas Kerja :</label>
+                                    <input type="text" id="id-edit" value="" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">No Buku :</label>
+                                    <input 
+                                        name="no_buku"
+                                        type="text" id="no_buku-edit" value="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">No SPJ :</label>
+                                    <input 
+                                        name="no_spj"
+                                        type="text" id="no_spj-edit" value="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <hr>
+    
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Tanggal Buku :</label>
+                                    <input
+                                        name="tanggal_buku" 
+                                        type="text" id="tanggal_buku-edit" value="" class="form-control mb-3">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tanggal SPJ :</label>
+                                    <input
+                                        name="tanggal_spj" 
+                                        type="text" id="tanggal_spj-edit" value="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg">
+                                <div class="form-group">
+                                    <label>Keterangan :</label>
+                                    <textarea 
+                                        name="keterangan" 
+                                        id="keterangan-edit" class="form-control" rows="6"></textarea>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <hr>
+    
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="">Nilai Transaksi</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp</span>
+                                        </div>
+                                        <input 
+                                            name="nilai_transaksi"
+                                            type="text" id="nilai_transaksi-edit" value="" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Pajak Audite</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp</span>
+                                        </div>
+                                        <input 
+                                            name="pajak_audite"
+                                            type="text" id="pajak_audite-edit" value="" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg">
+                                <div class="form-group">
+                                    <label for="">Temuan Pajak :</label>
+                                    <textarea 
+                                        name="temuan_pajak" 
+                                        id="temuan_pajak-edit" class="form-control" rows="6"></textarea>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="" class="d-block">Kesesuaian PPN :</label>
+                                    <select 
+                                        name="kesesuaian_ppn" 
+                                        id="kesesuaian_ppn-edit" 
+                                        class="selectpicker" 
+                                        data-style="form-control" data-width="100%">
+                                            @foreach ($kesesuaians as $kesesuaian)
+                                                <option value="{{ $kesesuaian->id }}">{{ $kesesuaian->name }}</option>
+                                            @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="" class="d-block">Kesesuaian PPh :</label>
+                                    <select 
+                                        name="kesesuaian_pph" 
+                                        id="kesesuaian_pph-edit" 
+                                        class="selectpicker" 
+                                        data-style="form-control" data-width="100%">
+                                            @foreach ($kesesuaians as $kesesuaian)
+                                                <option value="{{ $kesesuaian->id }}">{{ $kesesuaian->name }}</option>
+                                            @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="" class="d-block">Keterlambatan Penyetoran Pajak :</label>
+                                    <select 
+                                        name="keterlambatan_penyetoran" 
+                                        id="keterlambatan_penyetoran-edit" 
+                                        class="selectpicker" 
+                                        data-style="form-control" data-width="100%">
+                                            @foreach ($keterlambatans as $keterlambatan)
+                                                <option value="{{ $keterlambatan->id }}">{{ $keterlambatan->name }}</option>
+                                            @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <hr>
+    
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group bg-disabled px-3 py-1 rounded-lg">
+                                    <label for="" class="d-block">SSP :</label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            name="ssp" 
+                                            id="ssp-edit-1" 
+                                            value="1"
+                                            type="radio" class="custom-control-input">
+                                        <label class="custom-control-label" for="ssp-edit-1">Ada</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            name="ssp" 
+                                            id="ssp-edit-2" 
+                                            value="0"
+                                            type="radio" class="custom-control-input">
+                                        <label class="custom-control-label" for="ssp-edit-2">Tidak Ada</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg">
+                                <div class="form-group bg-disabled px-3 py-1 rounded-lg">
+                                    <label for="" class="d-block">Kelengkapan ttd/materai/stempel/admin :</label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="1"
+                                            type="radio" 
+                                            id="kelengkapan_ttd-edit-1" 
+                                            name="kelengkapan_ttd" class="custom-control-input">
+                                        <label class="custom-control-label" for="kelengkapan_ttd-edit-1">Lengkap</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="2"
+                                            type="radio" 
+                                            id="kelengkapan_ttd-edit-2" 
+                                            name="kelengkapan_ttd" class="custom-control-input">
+                                        <label class="custom-control-label" for="kelengkapan_ttd-edit-2">Kurang Lengkap</label>
+                                        </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="3"
+                                            type="radio" 
+                                            id="kelengkapan_ttd-edit-3" 
+                                            name="kelengkapan_ttd" class="custom-control-input">
+                                        <label class="custom-control-label" for="kelengkapan_ttd-edit-3">Tidak Lengkap</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group bg-disabled px-3 py-1 rounded-lg">
+                                    <label for="" class="d-block">Kuitansi :</label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="1"
+                                            type="radio" 
+                                            id="kuitansi-edit-1" 
+                                            name="kuitansi" class="custom-control-input">
+                                        <label class="custom-control-label" for="kuitansi-edit-1">Ada</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="0"
+                                            type="radio" 
+                                            id="kuitansi-edit-2" 
+                                            name="kuitansi" class="custom-control-input">
+                                        <label class="custom-control-label" for="kuitansi-edit-2">Tidak Ada</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group bg-disabled px-3 py-1 rounded-lg">
+                                    <label for="" class="d-block">Surat Tugas / SK :</label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="1"
+                                            type="radio" 
+                                            id="surat_sk-edit-1" 
+                                            name="surat_sk" class="custom-control-input">
+                                        <label class="custom-control-label" for="surat_sk-edit-1">Ada</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="0"
+                                            type="radio" 
+                                            id="surat_sk-edit-2" 
+                                            name="surat_sk" class="custom-control-input">
+                                        <label class="custom-control-label" for="surat_sk-edit-2">Tidak Ada</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group bg-disabled px-3 py-1 rounded-lg">
+                                    <label for="" class="d-block">Daftar Hadir Peserta :</label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="1"
+                                            type="radio" 
+                                            id="daftar_hadir_peserta-edit-1" 
+                                            name="daftar_hadir_peserta" class="custom-control-input">
+                                        <label class="custom-control-label" for="daftar_hadir_peserta-edit-1">Ada</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="0"
+                                            type="radio" 
+                                            id="daftar_hadir_peserta-edit-2" 
+                                            name="daftar_hadir_peserta" class="custom-control-input">
+                                        <label class="custom-control-label" for="daftar_hadir_peserta-edit-2">Tidak Ada</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group bg-disabled px-3 py-1 rounded-lg">
+                                    <label for="" class="d-block">Kesesuaian dg SBU / PMK :</label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="1"
+                                            type="radio" 
+                                            id="kesesuaian_sbu-edit-1" 
+                                            name="kesesuaian_sbu" class="custom-control-input">
+                                        <label class="custom-control-label" for="kesesuaian_sbu-edit-1">Sesuai</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="0"
+                                            type="radio" 
+                                            id="kesesuaian_sbu-edit-2" 
+                                            name="kesesuaian_sbu" class="custom-control-input">
+                                        <label class="custom-control-label" for="kesesuaian_sbu-edit-2">Tidak Sesuai</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group bg-disabled px-3 py-1 rounded-lg">
+                                    <label for="" class="d-block">Kesesuaian MAK :</label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="1"
+                                            type="radio" 
+                                            id="kesesuaian_mak-edit-1" 
+                                            name="kesesuaian_mak" class="custom-control-input">
+                                        <label class="custom-control-label" for="kesesuaian_mak-edit-1">Sesuai</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input 
+                                            value="0"
+                                            type="radio" 
+                                            id="kesesuaian_mak-edit-2" 
+                                            name="kesesuaian_mak" class="custom-control-input">
+                                        <label class="custom-control-label" for="kesesuaian_mak-edit-2">Tidak Sesuai</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group bg-disabled px-3 py-1 rounded-lg">
+                                    <label for="" class="d-block">Kesesuaian dengan Laporan Kegiatan :</label>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input 
+                                                value="1"
+                                                type="radio" 
+                                                id="kesesuaian_laporan_kegiatan-edit-1" 
+                                                name="kesesuaian_laporan_kegiatan" class="custom-control-input">
+                                            <label class="custom-control-label" for="kesesuaian_laporan_kegiatan-edit-1">Sesuai</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input 
+                                                value="0"
+                                                type="radio" 
+                                                id="kesesuaian_laporan_kegiatan-edit-2" 
+                                                name="kesesuaian_laporan_kegiatan" class="custom-control-input">
+                                            <label class="custom-control-label" for="kesesuaian_laporan_kegiatan-edit-2">Tidak Sesuai</label>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <hr>
+                        
+                        <div class="text-grey mb-2">Temuan : </div>
+                        <div class="form-group">
+                            <label for="">Temuan 1 :</label>
+                            <select 
+                                name="temuan[temuan1]" id="temuan-edit-1" 
+                                class="selectpicker" title="Pilih Temuan" data-style="form-control" data-width="100%">
+                                    @foreach ($kode_temuans as $temuan)
+                                        <option value="{{ $temuan->id }}">{{ "[$temuan->kode] ".$temuan->detail }}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Temuan 2 :</label>
+                            <select 
+                                name="temuan[temuan2]" id="temuan-edit-2" 
+                                class="selectpicker" title="Pilih Temuan" data-style="form-control" data-width="100%">
+                                @foreach ($kode_temuans as $temuan)
+                                    <option value="{{ $temuan->id }}">{{ "[$temuan->kode] ".$temuan->detail }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Temuan 3 :</label>
+                            <select 
+                                name="temuan[temuan3]" id="temuan-edit-3" 
+                                class="selectpicker" title="Pilih Temuan" data-style="form-control" data-width="100%">
+                                @foreach ($kode_temuans as $temuan)
+                                    <option value="{{ $temuan->id }}">{{ "[$temuan->kode] ".$temuan->detail }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group mt-4">
+                            <label for="">Deskripsi Temuan dan Potensi TGR </label>
+                            <textarea name="deskripsi" id="deskripsi-edit" class="form-control" rows="2"></textarea>
+                        </div>
+    
+    
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row gutters-xs">
+                            <div class="col-sm-auto">
+                                <button data-dismiss="modal" class="btn btn-secondary">Batal</button>
+                            </div>
+                            <div class="col-sm-auto">
+                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                             </div>
                         </div>
                     </div>
-
-                    <hr>
-                    
-                    <div class="text-grey mb-2">Temuan : </div>
-                    <div id="temuan-wrapper-edit">
-                        {{--  --}}
-                    </div>
-                    <div class="form-group mt-4">
-                        <label for="">Deskripsi Temuan dan Potensi TGR </label>
-                        <textarea name="deskripsi" id="deskripsi-edit" class="form-control" rows="2" disabled></textarea>
-                    </div>
-
-
-                    
-                </div>
+                </form>
+                {{-- form end --}}
+                
             </div>
         </div>
     </div>
@@ -1473,102 +1515,118 @@
     <script src="{{ asset('vendors/datatable/datatable-bs.min.js') }}"></script>
     <script src="{{ asset('vendors/bs-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
 
-  <script>
+    <script>
 
-    // INIT DATETIME PICKER
-    $('[data-input="datetimepicker"]').datetimepicker({
-        icons: {
-            time: 'fas fa-clock'
-        },
-        timeZone:'Asia/Jakarta',
-        widgetPositioning: {
-            horizontal: 'auto',
-            vertical:'bottom'
-        },
-        minDate: moment()
-    });
+        // INIT DATETIME PICKER
+        $('[data-input="datetimepicker"]').datetimepicker({
+            icons: {
+                time: 'fas fa-clock'
+            },
+            timeZone:'Asia/Jakarta',
+            widgetPositioning: {
+                horizontal: 'auto',
+                vertical:'bottom'
+            },
+            minDate: moment()
+        });
 
-    $(document).ready(function() {
-        // $('#m-detail').modal('show');
-        $('#m-edit').modal('show');
-        const ajax_url = '{{ route('ajax.kertaskerjas') }}';
-        var table = $('#datatable').DataTable({
-            'dom': `<'row no-gutters'<'col-md'l><'col-md-auto'f><'col-md-auto'B>>
-                    <'row'<'col-12't>>
-                    <'row no-gutters justify-content-center'<'col-md'i><'col-md-auto'p>>`,
-            buttons: [
-                {
-                    extend: 'colvis',
-                    text: '<i class="fas fa-table mr-2"></i>Pilih Kolom',
-                    className: 'btn-primary',
-                    prefixButtons: [ 
-                        {
-                            extend: 'colvisRestore',
-                            text: 'Tampilkan Semua Kolom'
-                        }
-                    ]
-                },
-                {
-                    extend: 'excel',
-                    text: '<i class="fas fa-file-excel mr-2"></i>Export Excel',
-                    className: 'btn-success',
-                    title: 'Test Data export',
-                    exportOptions: {
-                        orthogonal: "dtm",
-                        columns: [ ":visible" ]
-                    }
-                }, 
-            ],
-            responsive: true,
-            "pagingType": "numbers",
-            "language": {
-                "lengthMenu": "Tampilkan _MENU_",
-                "zeroRecords": "Tidak Ada Data",
-                "info": "Menampilkan _PAGE_ dari _PAGES_ page",
-                "infoEmpty": "Tidak Ada Data",
-                "infoFiltered": "(filtered from _MAX_ total records)",
-                "search": "Cari Data Mitra:"
-            },
-            ajax: ajax_url,
-            // preDrawCallback: () => {
-            //     $('#datatable').loader(true);
-            // },
-            'columnDefs': [
-                {
-                    'targets': 0,
-                    'checkboxes': {
-                    'selectRow': true
-                    }
-                }
-            ],
-            'select': {
-                'style': 'multi',
-                'selector': 'td:not(:last-child)'
-            },
-            'order': [[1, 'asc']],
-            columns: [
-                {data: 'id', name: 'id'},
-                {data: 'id', name: 'id'},
-                {data: 'no_buku', name: 'no_buku'},
-                {data: 'no_spj', name: 'no_spj'},
-                {data: 'keterangan', name: 'keterangan'},
-                {data: 'dibuat', name: 'dibuat'},
-                {
-                    data: 'dtm', name: 'dtm',
-                    render: function(data,type,row) {
-                        if (type === 'dtm') {
-                            return data === '1' ? 'Y' : 'N';
-                        } 
-                        if (type === 'sort') {
-                            return data;
-                        } 
-                        if (data === '1') {
-                            return '<span class="badge badge-success"><i class="fas fa-check"></i></span>';
-                        } else {
-                            return '<span class="badge badge-secondary"><i class="fas fa-times"></i></span>';
-                        }
-                        return data;
+        function removeAllChecked() {
+            $('#ditulis_dtm-edit-1').attr('checked', false); $('#ditulis_dtm-edit-2').attr('checked', false);
+            $('#ssp-edit-1').attr('checked', false);  $('#ssp-edit-2').attr('checked', false);
+            $('#kelengkapan_ttd-edit-1').attr('checked', false); $('#kelengkapan_ttd-edit-2').attr('checked', false); $('#kelengkapan_ttd-edit-3').attr('checked', false);
+            $('#kuitansi-edit-1').attr('checked', false); $('#kuitansi-edit-2').attr('checked', false);
+            $('#surat_sk-edit-1').attr('checked', false); $('#surat_sk-edit-2').attr('checked', false);
+            $('#daftar_hadir_peserta-edit-1').attr('checked', false); $('#daftar_hadir_peserta-edit-2').attr('checked', false);
+            $('#kesesuaian_sbu-edit-1').attr('checked', false); $('#kesesuaian_sbu-edit-2').attr('checked', false);
+            $('#kesesuaian_mak-edit-1').attr('checked', false); $('#kesesuaian_sbu-edit-2').attr('checked', false);
+            $('#kesesuaian_laporan_kegiatan-edit-1').attr('checked', false); $('#kesesuaian_laporan_kegiatan-edit-2').attr('checked', false);
+        }
+
+        $(document).ready(function() {
+            // $('#m-detail').modal('show');
+            // $('#m-edit').modal('show');
+
+            const ajax_url = '{{ route('ajax.kertaskerjas', $unitkerja->id) }}';
+            console.log(ajax_url);
+            var table = $('#datatable').DataTable({
+                'dom': `<'row no-gutters'<'col-md'l><'col-md-auto'f><'col-md-auto'B>>
+                        <'row'<'col-12't>>
+                        <'row no-gutters justify-content-center'<'col-md'i><'col-md-auto'p>>`,
+                buttons: [
+                    {
+                        extend: 'colvis',
+                        text: '<i class="fas fa-table mr-2"></i>Pilih Kolom',
+                        className: 'btn-primary',
+                        prefixButtons: [ 
+                            {
+                                extend: 'colvisRestore',
+                                text: 'Tampilkan Semua Kolom'
+                            }
+                        ]
                     },
+                    {
+                        extend: 'excel',
+                        text: '<i class="fas fa-file-excel mr-2"></i>Export Excel',
+                        className: 'btn-success',
+                        title: 'Test Data export',
+                        exportOptions: {
+                            orthogonal: "dtm",
+                            columns: [ ":visible" ]
+                        }
+                    }, 
+                ],
+                responsive: true,
+                "pagingType": "numbers",
+                "language": {
+                    "lengthMenu": "Tampilkan _MENU_",
+                    "zeroRecords": "Tidak Ada Data",
+                    "info": "Menampilkan _PAGE_ dari _PAGES_ page",
+                    "infoEmpty": "Tidak Ada Data",
+                    "infoFiltered": "(filtered from _MAX_ total records)",
+                    "search": "Cari Data Mitra:"
+                },
+                ajax: ajax_url,
+                // preDrawCallback: () => {
+                //     $('#datatable').loader(true);
+                // },
+                'columnDefs': [
+                    {
+                        'targets': 0,
+                        'checkboxes': {
+                        'selectRow': true
+                        }
+                    }
+                ],
+                'select': {
+                    'style': 'multi',
+                    'selector': 'td:not(:last-child)'
+                },
+                'order': [[1, 'asc']],
+                columns: [
+                    {data: 'id', name: 'id'},
+                    {data: 'id', name: 'id'},
+                    {data: 'no_buku', name: 'no_buku'},
+                    {data: 'no_spj', name: 'no_spj'},
+                    {data: 'keterangan', name: 'keterangan'},
+                    {data: 'dibuat', name: 'dibuat'},
+                    {
+                        data: 'dtm', name: 'dtm',
+                        render: function(data,type,row) {
+                            if (type === 'dtm') {
+                                return data === '1' ? 'Y' : 'N';
+                            } 
+                            if (type === 'sort') {
+                                return data;
+                            } 
+                            if (data === '1') {
+                                return '<span class="badge badge-success"><i class="fas fa-check"></i></span>';
+                            } else {
+                                return '<span class="badge badge-secondary"><i class="fas fa-times"></i></span>';
+                            }
+                            return data;
+                        },
+                    },
+<<<<<<< Updated upstream
                 },
                 {
                     data: 'action', name: 'action',
@@ -1637,98 +1695,215 @@
                                 error: function(err) {
                                     console.log(err);
                                 }
+=======
+                    {
+                        data: 'action', name: 'action',
+                        createdCell: (cell, cellData, rowData, rowIndex, cellIndex) => {
+                            // MODAL EDIT = #m-edit
+                            $(cell).find('[data-edit-id]').on('click', function(e) {
+                                const edit_id = $(this).data('edit-id');
+                                $.ajax({
+                                    url: `{{ route('ajax.getKertaskerjaById') }}/${edit_id}`,
+                                    beforeSend: function() {
+                                        $('#m-edit').modal('show');
+                                        $('#m-edit').find('.modal-body.load').show();
+                                        $('#m-edit').find('.modal-body.success').hide();
+                                        $('#m-edit #form-edit').attr('action', `{{ route('kertaskerja.update') }}/${edit_id}`);
+                                    },
+                                    success: function(result) {
+                                        const kertaskerja = result.data;
+                                        console.log(kertaskerja);
+                                        let temuan = kertaskerja.temuan !== null ? JSON.parse(kertaskerja.temuan) : null;
+                                        console.log(temuan);
+
+                                        // ajax data
+                                        $('#unitkerja-edit').html(kertaskerja.nama_unitkerja)
+                                        $('#id-edit').val(kertaskerja.id);
+                                        $('#no_buku-edit').val(kertaskerja.no_buku);
+                                        $('#no_spj-edit').val(kertaskerja.no_spj);
+                                        $('#tanggal_buku-edit').val(kertaskerja.tanggal_buku);
+                                        $('#tanggal_spj-edit').val(kertaskerja.tanggal_spj);
+                                        $('#keterangan-edit').html(kertaskerja.keterangan);
+                                        $('#nilai_transaksi-edit').val(kertaskerja.nilai_transaksi);
+                                        $('#pajak_audite-edit').val(kertaskerja.pajak_audite);
+                                        $('#temuan_pajak-edit').html(kertaskerja.temuan_pajak);
+                                        $('#kesesuaian_ppn-edit').selectpicker('val',kertaskerja.kesesuaian_ppn);
+                                        $('#kesesuaian_pph-edit').selectpicker('val',kertaskerja.kesesuaian_pph);
+                                        $('#keterlambatan_penyetoran-edit').selectpicker('val',kertaskerja.keterlambatan_penyetoran);
+                                        $('#deskripsi-edit').html(kertaskerja.deskripsi);
+
+                                        removeAllChecked();
+
+                                        kertaskerja.ditulis_dtm === '1' ? $('#ditulis_dtm-edit-1').attr('checked', true) : $('#ditulis_dtm-edit-2').attr('checked', true);
+                                        kertaskerja.ssp === '1' ? $('#ssp-edit-1').attr('checked', true) : $('#ssp-edit-2').attr('checked', true);
+                                        kertaskerja.kelengkapan_ttd === '1' ? $('#kelengkapan_ttd-edit-1').attr('checked', true) : (kertaskerja.kelengkapan_ttd === '2' ? $('#kelengkapan_ttd-edit-2').attr('checked', true) : $('#kelengkapan_ttd-edit-3').attr('checked', true));
+                                        kertaskerja.kuitansi === '1' ? $('#kuitansi-edit-1').attr('checked', true) : $('#kuitansi-edit-2').attr('checked', true);
+                                        kertaskerja.surat_sk === '1' ? $('#surat_sk-edit-1').attr('checked', true) : $('#surat_sk-edit-2').attr('checked', true);
+                                        kertaskerja.daftar_hadir_peserta === '1' ? $('#daftar_hadir_peserta-edit-1').attr('checked', true) : $('#daftar_hadir_peserta-edit-2').attr('checked', true);
+                                        kertaskerja.kesesuaian_sbu === '1' ? $('#kesesuaian_sbu-edit-1').attr('checked', true) : $('#kesesuaian_sbu-edit-2').attr('checked', true);
+                                        kertaskerja.kesesuaian_mak === '1' ? $('#kesesuaian_mak-edit-1').attr('checked', true) : $('#kesesuaian_sbu-edit-2').attr('checked', true);
+                                        kertaskerja.kesesuaian_laporan_kegiatan === '1' ? $('#kesesuaian_laporan_kegiatan-edit-1').attr('checked', true) : $('#kesesuaian_laporan_kegiatan-edit-2').attr('checked', true);
+
+                                        (temuan[0] !== undefined) ? $('#temuan-edit-1').selectpicker('val', temuan[0].id) : $('#temuan-edit-1').selectpicker('val', null);
+                                        (temuan[1] !== undefined) ? $('#temuan-edit-2').selectpicker('val', temuan[1].id) : $('#temuan-edit-2').selectpicker('val', null);
+                                        (temuan[2] !== undefined) ? $('#temuan-edit-3').selectpicker('val', temuan[2].id) : $('#temuan-edit-3').selectpicker('val', null);
+
+                                        // SHOW MODAL HIDE LOADER
+                                        $('#m-edit').find('.modal-body.load').hide();
+                                        $('#m-edit').find('.modal-body.success').show();
+                                    }
+                                })
+                            });
+
+                            // MODAL DETAIL = #m-detail
+                            $(cell).find('[data-detail-id]').on('click', function(e) {
+                                const detail_id = $(this).data('detail-id');
+                                $.ajax({
+                                    url: `{{ route('ajax.getKertaskerjaById') }}/${detail_id}`,
+                                    beforeSend: function() {
+                                        $('#m-detail').modal('show');
+                                        $('#m-detail').find('.modal-body.load').show();
+                                        $('#m-detail').find('.modal-body.success').hide();
+                                    },
+                                    success: function(result) {
+                                        const kertaskerja = result.data;
+                                        console.log(kertaskerja);
+                                        let temuan = kertaskerja.temuan !== null ? JSON.parse(kertaskerja.temuan).map((val) => {
+                                            return `
+                                            <div class="row mb-1">
+                                                <div class="col-auto">${val.kode}</div>
+                                                <div class="col">
+                                                    Penyetoran penerimaan negara/daerah atau kas di bendaharawan ke kas negara/daerah melebihi batas waktu yang ditentukan
+                                                </div>
+                                            </div>
+                                            `;
+                                        }) : '';
+                                        // ajax data
+                                        $('#unitkerja-detail').html(kertaskerja.nama_unitkerja)
+                                        $('#id-detail').val(kertaskerja.id);
+                                        $('#no_buku-detail').val(kertaskerja.no_buku);
+                                        $('#no_spj-detail').val(kertaskerja.no_spj);
+                                        $('#tanggal_buku-detail').val(kertaskerja.tanggal_buku);
+                                        $('#tanggal_spj-detail').val(kertaskerja.tanggal_spj);
+                                        $('#keterangan-detail').html(kertaskerja.keterangan);
+                                        $('#nilai_transaksi-detail').val(kertaskerja.nilai_transaksi);
+                                        $('#pajak_audite-detail').val(kertaskerja.pajak_audite);
+                                        $('#temuan_pajak-detail').html(kertaskerja.temuan_pajak);
+                                        $('#kesesuaian_ppn-detail').selectpicker('val',kertaskerja.kesesuaian_ppn);
+                                        $('#kesesuaian_pph-detail').selectpicker('val',kertaskerja.kesesuaian_pph);
+                                        $('#keterlambatan_penyetoran-detail').selectpicker('val',kertaskerja.keterlambatan_penyetoran);
+                                        $('#temuan-wrapper-detail').html('').append(temuan);
+                                        $('#deskripsi-detail').html(kertaskerja.deskripsi);
+
+                                        kertaskerja.ditulis_dtm === '1' ? 
+                                            $('#dtm-detail').html('<span class="badge badge-success"><i class="fas fa-check"></i></span>') : 
+                                            $('#dtm-detail').html('<span class="badge badge-secondary"><i class="fas fa-times"></i></span>');
+                                        kertaskerja.ssp === '1' ? $('#ssp-detail-1').attr('checked', true) : $('#ssp-detail-2').attr('checked', true);
+                                        kertaskerja.kelengkapan_ttd === '1' ? $('#kelengkapan_ttd-detail-1').attr('checked', true) : (kertaskerja.kelengkapan_ttd === '2' ? $('#kelengkapan_ttd-detail-2').attr('checked', true) : $('#kelengkapan_ttd-detail-3').attr('checked', true));
+                                        kertaskerja.kuitansi === '1' ? $('#kuitansi-detail-1').attr('checked', true) : $('#kuitansi-detail-2').attr('checked', true);
+                                        kertaskerja.surat_sk === '1' ? $('#surat_sk-detail-1').attr('checked', true) : $('#surat_sk-detail-2').attr('checked', true);
+                                        kertaskerja.daftar_hadir_peserta === '1' ? $('#daftar_hadir_peserta-detail-1').attr('checked', true) : $('#daftar_hadir_peserta-detail-2').attr('checked', true);
+                                        kertaskerja.kesesuaian_sbu === '1' ? $('#kesesuaian_sbu-detail-1').attr('checked', true) : $('#kesesuaian_sbu-detail-2').attr('checked', true);
+                                        kertaskerja.kesesuaian_mak === '1' ? $('#kesesuaian_mak-detail-1').attr('checked', true) : $('#kesesuaian_sbu-detail-2').attr('checked', true);
+                                        kertaskerja.kesesuaian_laporan_kegiatan === '1' ? $('#kesesuaian_laporan_kegiatan-detail-1').attr('checked', true) : $('#kesesuaian_laporan_kegiatan-detail-2').attr('checked', true);
+                                        
+                                        // SHOW MODAL HIDE LOADER
+                                        $('#m-detail').find('.modal-body.load').hide();
+                                        $('#m-detail').find('.modal-body.success').show();
+                                    }
+                                })
+>>>>>>> Stashed changes
                             })
-                        })
+                        },
+                        "searchable": false
                     },
-                    "searchable": false
-                },
-            ],
-            // drawCallback: () => {
-            //     $('#datatable').loader(false);
-            // },
-        });
-        table.buttons().container().appendTo('#col-export-table');
-        
-    } );
+                ],
+                // drawCallback: () => {
+                //     $('#datatable').loader(false);
+                // },
+            });
+            table.buttons().container().appendTo('#col-export-table');
+            
+        } );
 
-    var currentTab = 0; // Current tab is set to be the first tab (0)
-    showTab(currentTab); // Display the current tab
+        var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the current tab
 
-    function showTab(n) {
-        // This function will display the specified tab of the form...
-        var x = document.getElementsByClassName("tab");
-        x[n].style.display = "block";
-        //... and fix the Previous/Next buttons:
-        if (n == 0) {
-            document.getElementById("prevBtn").style.display = "none";
-        } else {
-            document.getElementById("prevBtn").style.display = "inline";
+        function showTab(n) {
+            // This function will display the specified tab of the form...
+            var x = document.getElementsByClassName("tab");
+            x[n].style.display = "block";
+            //... and fix the Previous/Next buttons:
+            if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
+            if (n >= x.length-1) {
+                document.getElementById("nextBtn").innerHTML = "Submit";
+            } else {
+                document.getElementById("nextBtn").innerHTML = "Selanjutnya <i class='fas fa-arrow-right' style='font-size: 10px;'></i>";
+            }
+            if (n >= (x.length)) {
+                $('#nextBtn').attr('data-dismiss', 'modal');
+            } 
+            //... and run a function that will display the correct step indicator:
+            fixStepIndicator(n)
         }
-        if (n >= x.length-1) {
-            document.getElementById("nextBtn").innerHTML = "Submit";
-        } else {
-            document.getElementById("nextBtn").innerHTML = "Selanjutnya <i class='fas fa-arrow-right' style='font-size: 10px;'></i>";
-        }
-        if (n >= (x.length)) {
-            $('#nextBtn').attr('data-dismiss', 'modal');
-        } 
-        //... and run a function that will display the correct step indicator:
-        fixStepIndicator(n)
-    }
 
-    function nextPrev(n) {
-        // This function will figure out which tab to display
-        var x = document.getElementsByClassName("tab");
-        // Exit the function if any field in the current tab is invalid:
-        if (n == 1 && !validateForm()) return false;
-        // Hide the current tab:
-        x[currentTab].style.display = "none";
-        // Increase or decrease the current tab by 1:
-        currentTab = currentTab + n;
-        // if you have reached the end of the form...
-        if (currentTab >= x.length) {
-            // ... the form gets submitted:
-            document.getElementById("store").submit();
-            return false;
+        function nextPrev(n) {
+            // This function will figure out which tab to display
+            var x = document.getElementsByClassName("tab");
+            // Exit the function if any field in the current tab is invalid:
+            if (n == 1 && !validateForm()) return false;
+            // Hide the current tab:
+            x[currentTab].style.display = "none";
+            // Increase or decrease the current tab by 1:
+            currentTab = currentTab + n;
+            // if you have reached the end of the form...
+            if (currentTab >= x.length) {
+                // ... the form gets submitted:
+                document.getElementById("store").submit();
+                return false;
+            }
+            // Otherwise, display the correct tab:
+            if (currentTab < x.length) {
+                showTab(currentTab);
+            }
         }
-        // Otherwise, display the correct tab:
-        if (currentTab < x.length) {
-            showTab(currentTab);
+
+        function validateForm() {
+            // This function deals with validation of the form fields
+            var x, y, i, valid = true;
+            x = document.getElementsByClassName("tab");
+            y = x[currentTab].getElementsByTagName("input");
+            // A loop that checks every input field in the current tab:
+            // for (i = 0; i < y.length; i++) {
+            //     // If a field is empty...
+            //     if (y[i].value == "") {
+            //     // add an "invalid" class to the field:
+            //     console.log(y[i]);
+            //     y[i].className += " is-invalid";
+            //     // and set the current valid status to false
+            //     valid = false;
+            //     }
+            // }
+            // If the valid status is true, mark the step as finished and valid:
+            // if (valid) {
+            //     document.getElementsByClassName("step")[currentTab-1].className += " finish";
+            // }
+            return valid; // return the valid status
         }
-    }
 
-    function validateForm() {
-        // This function deals with validation of the form fields
-        var x, y, i, valid = true;
-        x = document.getElementsByClassName("tab");
-        y = x[currentTab].getElementsByTagName("input");
-        // A loop that checks every input field in the current tab:
-        // for (i = 0; i < y.length; i++) {
-        //     // If a field is empty...
-        //     if (y[i].value == "") {
-        //     // add an "invalid" class to the field:
-        //     console.log(y[i]);
-        //     y[i].className += " is-invalid";
-        //     // and set the current valid status to false
-        //     valid = false;
-        //     }
-        // }
-        // If the valid status is true, mark the step as finished and valid:
-        // if (valid) {
-        //     document.getElementsByClassName("step")[currentTab-1].className += " finish";
-        // }
-        return valid; // return the valid status
-    }
-
-    function fixStepIndicator(n) {
-        // This function removes the "active" class of all steps...
-        var i, x = document.getElementsByClassName("step");
-        for (i = 0; i < x.length; i++) {
-            x[i].className = x[i].className.replace(" active", "");
+        function fixStepIndicator(n) {
+            // This function removes the "active" class of all steps...
+            var i, x = document.getElementsByClassName("step");
+            for (i = 0; i < x.length; i++) {
+                x[i].className = x[i].className.replace(" active", "");
+            }
+            //... and adds the "active" class on the current step:
+            x[n-1].className += " active";
         }
-        //... and adds the "active" class on the current step:
-        x[n-1].className += " active";
-    }
 
-</script>
+    </script>
 @endsection

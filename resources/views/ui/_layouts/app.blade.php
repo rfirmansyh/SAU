@@ -33,6 +33,7 @@
             </div>
 
             @include('ui._layouts.app-footer')
+            
         </div>
     </div>
 @endsection

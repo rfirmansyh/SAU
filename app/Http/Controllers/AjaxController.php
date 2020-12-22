@@ -20,8 +20,8 @@ class AjaxController extends Controller
         return api_response(1, 'Kertas Kerja By Id Success', $kertaskerja);
     }
 
-    public function getKertasKerjas(Request $request) {
-        $kertaskerjas = \App\Kertaskerja::all();
+    public function getKertasKerjas(Request $request, $unitkerja_id) {
+        $kertaskerjas = \App\Kertaskerja::where('unitkerja_id', $unitkerja_id)->get();
         return DataTables::of($kertaskerjas)
             ->addColumn('id', function($kertaskerja) {
                 return $kertaskerja->id;
@@ -42,8 +42,35 @@ class AjaxController extends Controller
                 return $kertaskerja->ditulis_dtm;
             })
             ->addColumn('action', function($kertaskerja) {
-                return '<button data-edit-id="'.$kertaskerja->id.'" class="btn btn-sm btn-warning"><i class="fas fa-pen"></i></a>
+                return '<button data-edit-id="'.$kertaskerja->id.'" class="btn btn-sm btn-warning mr-1"><i class="fas fa-pen"></i></a>
                         <button data-detail-id="'.$kertaskerja->id.'" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>';
+            })
+            ->rawColumns(['action'])->make(true);
+    }
+
+    public function getDtm(Request $request, $unitkerja_id) {
+        $kertaskerjas = \App\Kertaskerja::where('unitkerja_id', $unitkerja_id)->where('ditulis_dtm', '1')->get();
+        return DataTables::of($kertaskerjas)
+            ->addColumn('id', function($kertaskerja) {
+                return $kertaskerja->id;
+            })
+            ->addColumn('no_buku', function($kertaskerja) {
+                return $kertaskerja->no_buku;
+            })
+            ->addColumn('no_spj', function($kertaskerja) {
+                return $kertaskerja->no_spj;
+            })
+            ->addColumn('keterangan', function($kertaskerja) {
+                return substr($kertaskerja->keterangan, 0, 30).( ($kertaskerja->keterangan > 30) ? '...' : ''  );
+            })
+            ->addColumn('dibuat', function($kertaskerja) {
+                return $kertaskerja->created_at;
+            })
+            ->addColumn('dtm', function($kertaskerja) {
+                return $kertaskerja->ditulis_dtm;
+            })
+            ->addColumn('action', function($kertaskerja) {
+                return '<button data-detail-id="'.$kertaskerja->id.'" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>';
             })
             ->rawColumns(['action'])->make(true);
     }

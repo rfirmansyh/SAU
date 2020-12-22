@@ -14,7 +14,9 @@
         </h2>
     </div>
     <div class="col-md-auto">
-      <a href="#m-add-unitkerja" data-toggle="modal" class="btn btn-block btn-lg btn-primary"><i class="fas fa-plus mr-2"></i> Tambah Data Unit Kerja</a>
+      	<button data-target="#m-add-unitkerja" data-toggle="modal" class="btn btn-block btn-lg btn-primary">
+		  <i class="fas fa-plus mr-2"></i> Tambah Data Unit Kerja
+		</button>
     </div>
   </div>
 @endsection
@@ -146,9 +148,9 @@
 				</button>
           	</div>
 
-			<div class="modal-body">
 			<form action="" method="POST" id="form-m-edit" enctype="multipart/form-data">
-				@csrf @method('PUT')
+			@csrf @method('PUT')
+			<div class="modal-body">
 				<div class="card card-body">
 					<div class="img-unitkerja">
 						<img src="" alt="" id="img-unitkerja-edit">
@@ -244,7 +246,6 @@
 
 {{-- script : kalo butu editing script --}}
 @section('script')
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"></script>
 	<script>
 		@if($errors->first('type') === 'update')
 			$('#m-edit').modal('show');
@@ -263,9 +264,6 @@
 					console.log(result);
     			}
 			});
-		@endif
-		@if($errors->first('type') === 'store')
-			$('#m-add-unitkerja').modal('show');
 		@endif
 		
 
