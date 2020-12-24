@@ -24,16 +24,16 @@ Route::view('/ui/unitkerja/show', 'ui/unitkerja/show');
 // dimas 
 Route::view('/ui/profil', 'ui/profil');
 
-
+// UNIT KERJA
 Route::get('unitkerja', 'UnitkerjaController@index')->name('unitkerja.index');
-// Route::get('unitkerja/{unitkerja}/kertaskerja', 'UnitkerjaController@kertasKerja')->name('unitkerja.kertasKerja');
 Route::post('unitkerja', 'UnitkerjaController@store')->name('unitkerja.store');
 Route::put('unitkerja/{unitkerja?}', 'UnitkerjaController@update')->name('unitkerja.update');
 
 // KERTAS KERJA
-Route::get('kertaskerja/{unitkerja_id}', 'KertaskerjaController@index')->name('kertaskerja.index');
+Route::get('kertaskerja/{unitkerja_id?}', 'KertaskerjaController@index')->name('kertaskerja.index');
 Route::post('kertaskerja/{unitkerja_id}', 'KertaskerjaController@store')->name('kertaskerja.store');
 Route::put('kertaskerja/update/{kertaskerja_id?}', 'KertaskerjaController@update')->name('kertaskerja.update');
+Route::delete('kertaskerja/delete/{kertaskerja_id?}', 'KertaskerjaController@delete')->name('kertaskerja.delete');
 
 // DTM
 Route::get('dtm', 'KertaskerjaController@dtm')->name('kertaskerja.dtm.index');

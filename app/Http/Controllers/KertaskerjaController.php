@@ -12,13 +12,22 @@ class KertaskerjaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($unitkerja_id)
+    public function index(Request $request, $unitkerja_id = null)
     {
-        $unitkerja = \App\Unitkerja::find($unitkerja_id);
+        $unitkerjas = \App\Unitkerja::all();
+        $unitkerja = \App\Unitkerja::first();
+        if ($unitkerja_id !== null) {
+            $unitkerja = \App\Unitkerja::find(intval($unitkerja_id));
+        }
+        if ($request->select_unitkerja_id) {
+            $unitkerja = \App\Unitkerja::find(intval($request->select_unitkerja_id));
+        }
+        
         $kesesuaians = \App\Kesesuaian::all();
         $keterlambatans = \App\Keterlambatan::all();
         $kode_temuans = \App\KodeTemuan::all();
         return view('unitkerja.kertaskerja')->with([
+            'unitkerjas' => $unitkerjas,
             'unitkerja' => $unitkerja,
             'kesesuaians' => $kesesuaians,
             'keterlambatans' => $keterlambatans,
@@ -55,6 +64,35 @@ class KertaskerjaController extends Controller
      */
     public function store(Request $request, $unitkerja_id)
     {
+        $validator = \Validator::make($request->all(), [
+            'nama_kertaskerja'                  => 'required',
+            'no_buku'                           => 'required',
+            'no_spj'                            => 'required',
+            'tanggal_buku'                      => 'required',    
+            'tanggal_spj'                       => 'required',    
+            'nilai_transaksi'                   => 'required',        
+            'ssp'                               => 'required',
+            'kesesuaian_ppn'                    => 'required',        
+            'kesesuaian_pph'                    => 'required',        
+            'keterlambatan_penyetoran'          => 'required',                
+            'kuitansi'                          => 'required',
+            'surat_sk'                          => 'required',
+            'kelengkapan_ttd'                   => 'required',        
+            'daftar_hadir_peserta'              => 'required',            
+            'kesesuaian_sbu'                    => 'required',        
+            'kesesuaian_mak'                    => 'required',        
+            'kesesuaian_laporan_kegiatan'       => 'required',                   
+            'ditulis_dtm'                       => 'required',                   
+        ]);
+
+        if ($validator->fails()) {
+            $validator->getMessageBag()->add('type', 'store');
+
+            return redirect()->route('kertaskerja.index', $unitkerja_id)
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
         $kertaskerja = new Kertaskerja;
         $kertaskerja->nama_kertaskerja = $request->nama_kertaskerja;
         $kertaskerja->no_buku = $request->no_buku;
@@ -133,6 +171,40 @@ class KertaskerjaController extends Controller
     public function update(Request $request, $id)
     {
         $kertaskerja = Kertaskerja::find($id);
+
+        $messages = [
+            'required' => 'Harus Diisi'
+        ];
+
+        $validator = \Validator::make($request->all(), [
+            'no_buku'                           => 'required',    
+            'no_spj'                            => 'required',   
+            'tanggal_buku'                      => 'required',         
+            'tanggal_spj'                       => 'required',        
+            'nilai_transaksi'                   => 'required',            
+            'ssp'                               => 'required',
+            'kesesuaian_ppn'                    => 'required',           
+            'kesesuaian_pph'                    => 'required',           
+            'keterlambatan_penyetoran'          => 'required',                     
+            'kuitansi'                          => 'required',     
+            'surat_sk'                          => 'required',     
+            'kelengkapan_ttd'                   => 'required',            
+            'daftar_hadir_peserta'              => 'required',                 
+            'kesesuaian_sbu'                    => 'required',           
+            'kesesuaian_mak'                    => 'required',           
+            'kesesuaian_laporan_kegiatan'       => 'required',  
+            'ditulis_dtm'                       => 'required',                          
+        ], $messages);
+
+        if ($validator->fails()) {
+            $validator->getMessageBag()->add('type', 'update');
+            $validator->getMessageBag()->add('editId', $id);
+
+            return redirect()->route('kertaskerja.index', $kertaskerja->unitkerja_id)
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
         $kertaskerja->no_buku = $request->no_buku;
         $kertaskerja->no_spj = $request->no_spj;
         $kertaskerja->tanggal_buku = \Carbon\Carbon::parse($request->tanggal_buku);
@@ -182,8 +254,29 @@ class KertaskerjaController extends Controller
      * @param  \App\Kertaskerja  $kertaskerja
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kertaskerja $kertaskerja)
+    public function delete(Request $request, $unitkerja_id)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'id'        => ['required', 'array', 'min:1']
+        ]);
+
+        if ($validator->fails()) {
+            \Session::flash('alert-type', 'danger'); 
+            \Session::flash('alert-message', 'Tidak Bisa Hapus, tidak ada baris yang dipilih!'); 
+
+            return redirect()->route('kertaskerja.index', $unitkerja_id);
+        }
+        $ids = $request->id;
+        $query = "id = $ids[0]";
+        if (count($ids) > 1) {
+            for ($i=1; $i < count($ids); $i++) { 
+                $query .= " or id = $ids[$i]";
+            }
+        }
+        
+        $result = \DB::table('kertaskerjas')->whereRaw($query)->delete();
+        \Session::flash('alert-type', 'success'); 
+        \Session::flash('alert-message', 'Data Kertas Kerja Berhasil Dihapus!'); 
+        return redirect()->route('kertaskerja.index', $unitkerja_id);
     }
 }

@@ -18,11 +18,11 @@ class CreateKertaskerjasTable extends Migration
             $table->string('nama_kertaskerja');
             $table->bigInteger('no_buku');
             $table->bigInteger('no_spj');
-            $table->timestamp('tanggal_buku')->nullable();
-            $table->timestamp('tanggal_spj')->nullable();
+            $table->timestamp('tanggal_buku')->useCurrent();
+            $table->timestamp('tanggal_spj')->useCurrent();
             $table->text('keterangan')->nullable();
             $table->bigInteger('nilai_transaksi');
-            $table->bigInteger('pajak_audite');
+            $table->bigInteger('pajak_audite')->nullable();
             $table->text('temuan_pajak')->nullable()->comment = 'Generate otomatis';
             $table->enum('ssp', ['1', '0'])->comment = '1 = Ada, 0 = Tidak Ada';
             $table->unsignedBigInteger('kesesuaian_ppn');
@@ -35,7 +35,7 @@ class CreateKertaskerjasTable extends Migration
             $table->enum('kesesuaian_sbu', ['1', '0'])->comment = '1 = Sesuai, 0 = Tidak Sesuai';
             $table->enum('kesesuaian_mak', ['1', '0'])->comment = '1 = Sesuai, 0 = Tidak Sesuai';
             $table->enum('kesesuaian_laporan_kegiatan', ['1', '0'])->comment = '1 = Sesuai, 0 = Tidak Sesuai';
-            $table->text('temuan')->comment = 'json_decode value';
+            $table->text('temuan')->nullable()->comment = 'json_decode value';
             $table->text('deskripsi')->nullable();
             $table->enum('ditulis_dtm', ['1', '0'])->comment = '1 = V, 0 = X';
             $table->enum('npwp', ['1', '0'])->nullabe()->comment = '1 = Ada, 0 = Tidak Ada';
@@ -49,7 +49,7 @@ class CreateKertaskerjasTable extends Migration
             $table->foreign('kesesuaian_pph')->references('id')->on('kesesuaians');
             $table->foreign('keterlambatan_penyetoran')->references('id')->on('keterlambatans');
             $table->foreign('created_by_uid')->references('id')->on('users');
-            $table->foreign('unitkerja_id')->references('id')->on('unitkerjas');
+            $table->foreign('unitkerja_id')->references('id')->on('unitkerjas')->onDelete('cascade');
         });
     }
 

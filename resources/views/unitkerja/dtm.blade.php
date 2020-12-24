@@ -534,14 +534,14 @@
 
 @section('script')
     <script src="{{ asset('vendors/datatable/datatable.min.js') }}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.bootstrap4.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
-    <script type="text/javascript" src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
+    <script src="{{ asset('vendors/datatable/datatable-colvis.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatable/datatable-bs-button.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatable/datatable-select.min.js') }}"></script>
+    <script src="{{ asset('vendors/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatable-checkbox/dataTables.checkboxes.min.js') }}"></script>
     <script src="{{ asset('vendors/datatable/datatable-bs.min.js') }}"></script>
     <script src="{{ asset('vendors/bs-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
+
 
     <script>
 
