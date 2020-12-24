@@ -8,15 +8,18 @@
       <ul class="sidebar-menu">
           <li class="menu-header">Dashboard</li>
           {{-- acitve --}}
-          <li class="">
-            <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+          <li class="{{ Request::is('home') ? 'active' : ''}}">
+            <a href="{{ route('index') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
           </li>
           <li class="menu-header">Audit</li>
-          <li class="{{ Request::is('unitkerja*') || Request::is('kertaskerja*') ? 'active' : ''}}">
+          <li class="{{ Request::is('unitkerja*') ? 'active' : ''}}">
             <a class="nav-link" href="{{ route('unitkerja.index') }}"><i class="far fa-newspaper"></i> <span>Unit Kerja</span></a>
           </li>
+          <li class="{{ Request::is('kertaskerja*') ? 'active' : ''}}">
+            <a class="nav-link" href="{{ route('kertaskerja.index') }}"><i class="far fa-file-alt"></i> <span>Kertas Kerja</span></a>
+          </li>
           <li class="{{ Request::is('dtm*') ? 'active' : ''}}">
-            <a class="nav-link" href="{{ route('kertaskerja.dtm.index') }}"><i class="far fa-file-alt"></i> <span>Semua DTM</span></a>
+            <a class="nav-link" href="{{ route('kertaskerja.dtm.index') }}"><i class="far fa-file-alt"></i> <span>DTM</span></a>
           </li>
           <li class=""><a class="nav-link" href="{{ url('ui/profil') }}"><i class="far fa-user"></i> <span>Auditor</span></a></li>
         </ul>
