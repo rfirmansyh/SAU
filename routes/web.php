@@ -34,6 +34,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/home', 'HomeController@index')->name('index');
+    Route::get('/profile', 'HomeController@profile')->name('profile');
     
     // UNIT KERJA
     Route::get('unitkerja', 'UnitkerjaController@index')->name('unitkerja.index');

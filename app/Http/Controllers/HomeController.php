@@ -40,4 +40,9 @@ class HomeController extends Controller
             'kertaskerja_monthly' => $kertaskerja_monthly
         ]);
     }
+
+    public function profile()
+    {
+        return view('profile');
+    }
 }

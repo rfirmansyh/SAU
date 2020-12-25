@@ -21,7 +21,9 @@
           <li class="{{ Request::is('dtm*') ? 'active' : ''}}">
             <a class="nav-link" href="{{ route('kertaskerja.dtm.index') }}"><i class="far fa-file-alt"></i> <span>DTM</span></a>
           </li>
-          <li class=""><a class="nav-link" href="{{ url('ui/profil') }}"><i class="far fa-user"></i> <span>Auditor</span></a></li>
+          <li class="{{ Request::is('profile') ? 'active' : ''}}">
+            <a class="nav-link" href="{{ route('profile') }}"><i class="far fa-user"></i> <span>Auditor</span></a>
+          </li>
         </ul>
 
     </aside>
