@@ -338,10 +338,11 @@
                 vertical:'bottom'
             }
         });
+
+        const ajax_url = '{{ route('ajax.kertaskerjas', $unitkerja->id) }}';
         var table;
         $(document).ready(function() {
 
-            const ajax_url = '{{ route('ajax.kertaskerjas', $unitkerja->id) }}';
             table = $('#datatable').DataTable({
                 'dom': `<'row no-gutters'<'col-md'l><'col-md-auto'f><'col-md-auto'B>>
                         <'row'<'col-12't>>
@@ -369,7 +370,7 @@
                         }
                     }, 
                 ],
-                responsive: true,
+                responsive: false,
                 "pagingType": "numbers",
                 "language": {
                     "lengthMenu": "Tampilkan _MENU_",
@@ -379,8 +380,8 @@
                     "infoFiltered": "(filtered from _MAX_ total records)",
                     "search": "Cari Data Kertas Kerja:"
                 },
-                ajax: ajax_url,
-                serverSide: true,
+                // ajax: ajax_url,
+                // serverSide: true,
                 preDrawCallback: () => {
                     $('#datatable').loader(true);
                 },

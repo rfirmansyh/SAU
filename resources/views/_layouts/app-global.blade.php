@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('vendors/stisla/css/components.css')}}">
     {{-- bs-select vendor --}}
     <link rel="stylesheet" href="{{ asset('vendors/bs-select/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('vendors/bs-datetimepicker/bootstrap-datetimepicker.min.css') }}">
     @yield('style')
 
     <title>SAU | @yield('title')</title>
