@@ -16,51 +16,21 @@
 	<div class="row d-flex justify-content-center">
 		<div class="col-md-10">
 			<div class="card">
-				<div class="card-body">
+				<div class="card-body p-0">
 					<div class="row">
-						<div class="col-lg-4 d-flex flex-column align-items-center">
-							<div class="p-2 bg-white rounded-circle border-primary" style="border: .5rem solid">
+						<div class="col-lg-4 d-flex flex-column align-items-center bg-primary text-white px-3 py-4">
+							<div class="p-2 bg-primary rounded-circle border-white" style="border: .5rem solid">
 								<div class="img-profile img-profile-sm">
 									<img src="{{asset('img/unitkerja/fasilkom.png')}}"></img>
 								</div>
 							</div>
-							<h2 class="font-weight-bold mt-4 ">user</h2>
-							<p class="font-italic">user12</p>
+							<h4 class="font-weight-bold mt-4 ">Zarah Puspita</h4>
+							<p class="font-italic">Auditor Unej</p>
+						</div>
+						<div class="col-lg-4">
+							
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4 bg-primary rounded-left">
-					<div class="card-blok text-center text-white">
-						<img src="{{asset('img/unitkerja/fasilkom.png')}}" class="rounded-circle mt-5 border border-white" width="100px" height="100px"></img>
-						<h2 class="font-weight-bold mt-4 ">user</h2>
-						<p class="font-italic">user12</p>
-						<i data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="fa fa-edit mb-4" style="cursor: pointer; font-size:25px;"></i>
-					</div>
-				</div>
-				<div class="col-sm-8 bg-white rounded-right">
-
-				<h3 class="mt-3 text-center">Information</h3>
-				<hr class="badge-primary mt-0 w-25">
-				<div class="row mt-5">
-					<div class="col-sm-6">
-						<p class="font-weight-bold">Email</p>
-						<h6 class="text-muted">user@gmail.com</h6>
-					</div>
-					<div class="col-sm-6">
-						<p class="font-weight-bold">Status</p>
-						<button class="border-0 bg-success rounded-pill text-white">Aktif</button>
-					</div>
-					<div class="col-sm-6 mt-3">
-						<p class="font-weight-bold">Nomor Hp</p>
-						<h6 class="text-muted">0085123456789</h6>
-					</div>
-					<div class="col-sm-6 mt-3">
-						<p class="font-weight-bold">Bio</p>
-						<h6 class="text-muted">Saya adalah auditor</h6>
-					</div>
-				</div>
 				</div>
 			</div>
 		</div>

@@ -340,6 +340,7 @@
         });
 
         const ajax_url = '{{ route('ajax.kertaskerjas', $unitkerja->id) }}';
+        console.log(ajax_url);
         var table;
         $(document).ready(function() {
 
@@ -380,8 +381,8 @@
                     "infoFiltered": "(filtered from _MAX_ total records)",
                     "search": "Cari Data Kertas Kerja:"
                 },
-                // ajax: ajax_url,
-                // serverSide: true,
+                ajax: ajax_url,
+                serverSide: true,
                 preDrawCallback: () => {
                     $('#datatable').loader(true);
                 },
