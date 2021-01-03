@@ -132,6 +132,7 @@ class KertaskerjaController extends Controller
         $kertaskerja->deskripsi = $request->deskripsi;
         $kertaskerja->ditulis_dtm = $request->ditulis_dtm;
         $kertaskerja->unitkerja_id = $unitkerja_id;
+        $kertaskerja->created_by_uid = \Auth::user()->id;
         $kertaskerja->save();
 
         \Session::flash('alert-type', 'success'); 

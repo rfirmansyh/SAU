@@ -38,6 +38,6 @@ class User extends Authenticatable
     ];
 
     public function kertas_kerjas() {
-        return $this->hasMany('App\Kertaskerja');
+        return $this->hasMany('App\Kertaskerja', 'created_by_uid');
     }
 }

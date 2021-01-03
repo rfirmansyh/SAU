@@ -43,9 +43,16 @@
 					<div class="card-body">
 						<div class="row">
 						<div class="col-md-6 col-lg-5 mb-3 mb-md-0">
+							@if ($unitkerja->photo)
 							<div class="img-card">
-							<img src="{{ asset('storage/'.$unitkerja->photo) }}" alt="">
+								<img src="{{ asset('storage/'.$unitkerja->photo) }}" alt="">
 							</div>
+							@else
+								<div class="card card-body d-flex align-items-center justify-content-center bg-secondary h-100">
+									<i class="far fa-newspaper" style="font-size: 32px"></i>
+									<div>No Image</div>
+								</div>
+							@endif
 						</div>
 						<div class="col-md-6 col-lg-6 d-flex flex-column justify-content-between">
 							<div>

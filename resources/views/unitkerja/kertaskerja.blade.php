@@ -10,9 +10,16 @@
 @section('content-header')
     <div class="row gutters-xs align-items-lg-center justify-content-between my-4">
         <div class="col-md-6 col-lg-3 col-xl-2">
-        <div class="card card-body p-2 mb-0">
-            <img src="{{ asset('storage/'.$unitkerja->photo) }}" alt="" class="img-fluid">
-        </div>
+            @if ($unitkerja->photo)
+            <div class="card card-body p-2 mb-0">
+                <img src="{{ asset('storage/'.$unitkerja->photo) }}" alt="" class="img-fluid">
+            </div>
+            @else
+            <div class="card card-body d-flex align-items-center justify-content-center bg-secondary mb-0" style="height: 80px">
+                <i class="far fa-newspaper" style="font-size: 32px"></i>
+                <div>No Image</div>
+            </div>
+            @endif
         </div>
         <div class="col-md pl-3 mb-3 mb-md-0">
             <h5 class="my-0">{{ $unitkerja->name }}</h5>

@@ -17,18 +17,43 @@
 		<div class="col-md-10">
 			<div class="card">
 				<div class="card-body p-0">
-					<div class="row">
+					<div class="row no-gutters">
 						<div class="col-lg-4 d-flex flex-column align-items-center bg-primary text-white px-3 py-4">
 							<div class="p-2 bg-primary rounded-circle border-white" style="border: .5rem solid">
 								<div class="img-profile img-profile-sm">
-									<img src="{{asset('img/unitkerja/fasilkom.png')}}"></img>
+									<img src="{{asset('img/unitkerja/fasilkom.png')}}">
 								</div>
 							</div>
-							<h4 class="font-weight-bold mt-4 ">Zarah Puspita</h4>
+							<h4 class="font-weight-bold mt-4 ">{{ $user->name }}</h4>
 							<p class="font-italic">Auditor Unej</p>
 						</div>
-						<div class="col-lg-4">
-							
+						<div class="col-lg p-4">
+							<div class="card card-statistic-1">
+                  <div class="card-icon bg-primary">
+                  <i class="far fa-file-alt"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Total Kertas Kerja Dibuat</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5>{{ $user_kertaskerjas }}</h5>
+                    </div>
+                  </div>
+              </div>
+							<div class="card card-statistic-1">
+                  <div class="card-icon bg-success">
+                  <i class="far fa-file-alt"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Total DTM Dibuat</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5>{{ $user_dtm }}</h5>
+                    </div>
+                  </div>
+              </div>
 						</div>
 					</div>
 				</div>

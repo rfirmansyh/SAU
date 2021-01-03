@@ -22,7 +22,7 @@
             <a class="nav-link" href="{{ route('kertaskerja.dtm.index') }}"><i class="far fa-file-alt"></i> <span>DTM</span></a>
           </li>
           <li class="{{ Request::is('profile') ? 'active' : ''}}">
-            <a class="nav-link" href="{{ route('profile') }}"><i class="far fa-user"></i> <span>Auditor</span></a>
+            <a class="nav-link" href="{{ route('profile') }}"><i class="far fa-user"></i> <span>Profil</span></a>
           </li>
         </ul>
 

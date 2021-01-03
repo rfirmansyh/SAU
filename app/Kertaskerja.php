@@ -13,6 +13,6 @@ class Kertaskerja extends Model
         return $this->belongsTo('App\Keterlambatan');
     }
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'created_by_uid');
     }
 }

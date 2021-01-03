@@ -43,6 +43,13 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return view('profile');
+        $user = \Auth::user();
+        $user_kertaskerjas = $user->kertas_kerjas()->count();
+        $user_dtm = $user->kertas_kerjas()->where('ditulis_dtm', '1')->count();
+        return view('profile')->with([
+            'user' => $user,
+            'user_kertaskerjas' => $user_kertaskerjas,
+            'user_dtm' => $user_dtm
+        ]);
     }
 }
