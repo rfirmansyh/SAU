@@ -272,6 +272,9 @@
     			}
 			});
 		@endif
+		@if($errors->first('type') === 'store')
+			$('#m-add').modal('show');
+		@endif
 		
 
 		$('button[data-unitkerja-id]').on('click', function() {

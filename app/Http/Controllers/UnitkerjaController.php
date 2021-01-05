@@ -27,7 +27,7 @@ class UnitkerjaController extends Controller
         ]);
 
         if ($validator->fails()) {
-            $validator->getMessageBag()->add('type', 'update');
+            $validator->getMessageBag()->add('type', 'store');
 
             return redirect()->route('unitkerja.index')
                         ->withErrors($validator)
