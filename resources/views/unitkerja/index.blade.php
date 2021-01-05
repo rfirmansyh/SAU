@@ -117,19 +117,34 @@
 					</div>
 					<div class="form-group">
 						<label for="">Nama Unit Kerja</label>
-						<input type="text" name="name" class="form-control" value="{{ old('name') }}">
+						<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+						@error('name')
+							<span class="tx-12 text-danger" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
 					</div>
 					<div class="form-group">
 						<label for="">Deskripsi Unit Kerja</label>
-						<textarea name="description" class="form-control">{{ old('description') }}</textarea>
+						<textarea name="description" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+						@error('description')
+							<span class="tx-12 text-danger" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
 					</div>
 					<div class="form-group">
 						<label for="" class="d-block">Pilih Sumberdana</label>
-						<select name="sumberdana_id" id="" class="selectpicker" data-style="form-control" data-width="100%">
+						<select name="sumberdana_id" id="" class="selectpicker" data-style="form-control @error('sumberdana_id') is-invalid @enderror" data-width="100%">
 							@foreach ($sumberdanas as $s)
 								<option {{ old('sumberdana_id') === $s->id ? 'selected' : '' }} value="{{ $s->id }}">{{ $s->name }}</option>
 							@endforeach
 						</select>
+						@error('sumberdana_id')
+							<span class="tx-12 text-danger" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -273,7 +288,7 @@
 			});
 		@endif
 		@if($errors->first('type') === 'store')
-			$('#m-add').modal('show');
+			$('#m-add-unitkerja').modal('show');
 		@endif
 		
 
