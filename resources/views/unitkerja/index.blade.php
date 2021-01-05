@@ -35,8 +35,8 @@
 
 	<div class="row">
 		@foreach ($unitkerjas as $unitkerja)
-			<div class="col-md-6">
-				<div class="card">
+			<div class="col-md-6 mb-4">
+				<div class="card h-100">
 					<div class="card-header">
 						<h3 class="font-weight-bold">{{ $unitkerja->name }}</h3>
 					</div>
