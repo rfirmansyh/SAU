@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
             'name' => 'Rahmad Firmansyah',
             'email' => 'fsyah7052@gmail.com',
             'password' => bcrypt('123123'),
+            'code' => Caesar::enc('laravel', 7),
             'created_at' => now()
         ];
         DB::table('users')->insert($users);
