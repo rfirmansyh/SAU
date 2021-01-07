@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/home', 'HomeController@index')->name('index');
     Route::get('/profile', 'HomeController@profile')->name('profile');
+    Route::post('/profile/decrypt', 'HomeController@decrypt')->name('profile.decrypt');
+    Route::post('/profile/encrypt', 'HomeController@encrypt')->name('profile.encrypt');
     
     // UNIT KERJA
     Route::get('unitkerja', 'UnitkerjaController@index')->name('unitkerja.index');

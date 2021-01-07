@@ -51,15 +51,19 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+
     protected function credentials(Request $request)
     {
-        return $request->only($this->username(), 'password', 'code');
+        // dd($request->only($this->username(), 'password', 'code'));
+        return [
+            $this->username() => $request->email,
+            'password' =>$request->password,
+            'code' => \Caesar::enc($request->code, 7)
+        ];
     }
 
     protected function attemptLogin(Request $request)
     {
-        $request->merge([ 'code' => \Caesar::enc($request->code, 7) ]);
-
         return $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );

@@ -54,6 +54,34 @@
                     </div>
                   </div>
               </div>
+              
+              @if (isset($code_decrypt))
+              <form action="{{ route('profile.encrypt') }}" method="POST">
+                @csrf
+                <div class="form-grup">
+                  <label for="">Kode Auditor Kamu</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="code" value="{{ $code_decrypt }}">
+                    <div class="input-group-append csr-pointer">
+                      <button type="submit" class="input-group-text bg-light" id="basic-addon2">Enkrip Kembali</button>
+                    </div>
+                  </div>
+                </div>
+              </form>  
+              @else
+              <form action="{{ route('profile.decrypt') }}" method="POST">
+                @csrf
+                <div class="form-grup">
+                  <label for="">Kode Auditor Kamu</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="code" value="{{ $user->code }}">
+                    <div class="input-group-append csr-pointer">
+                      <button type="submit" class="input-group-text bg-light" id="basic-addon2">Dekripsi</button>
+                    </div>
+                  </div>
+                </div>
+              </form>    
+              @endif
 						</div>
 					</div>
 				</div>

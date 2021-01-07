@@ -52,4 +52,22 @@ class HomeController extends Controller
             'user_dtm' => $user_dtm
         ]);
     }
+
+    public function decrypt(Request $request)
+    {
+        $user = \Auth::user();
+        $user_kertaskerjas = $user->kertas_kerjas()->count();
+        $user_dtm = $user->kertas_kerjas()->where('ditulis_dtm', '1')->count();
+        return view('profile')->with([
+            'user' => $user,
+            'user_kertaskerjas' => $user_kertaskerjas,
+            'user_dtm' => $user_dtm,
+            'code_decrypt' => \Caesar::dec($request->code, 7)
+        ]);
+    }
+
+    public function encrypt(Request $request)
+    {
+        return redirect()->route('profile');
+    }
 }
